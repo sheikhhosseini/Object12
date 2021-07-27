@@ -1,14 +1,14 @@
 (function (window, document, $) {
 	"use strict";
-	
+
 	$(window).on("load", function () {
 		$(".noo-spinner").fadeOut('slow').remove();
 	});
-	
+
 	/* On resize */
 	$(window).on("resize", function () {
 	});
-	
+
 	/* On scroll */
 	$(window).on("scroll", function () {
 		if ($(this).scrollTop() > 500) {
@@ -17,12 +17,12 @@
 			$("#backtotop").removeClass("on");
 		}
 	});
-	
+
 	$(document).ready(function($) {
-		
+
 		//fitvids
 		if ($('.media-iframe').length > 0) $('.media-iframe').fitVids();
-		
+
 		//scroll to top
 		$("body").on("click", "#backtotop", function() {
 			$("html, body").animate({
@@ -30,19 +30,19 @@
 			}, 800);
 			return false;
 		});
-		
+
 		//Pretty photos
 		if($("a.prettyphoto").length > 0) {
 			$("a[data-rel^='prettyPhoto'], a.prettyphoto").prettyPhoto();
 			$("a[data-rel^='prettyPhoto']").prettyPhoto({hook:"data-rel",social_tools:!1,theme:"pp_default",horizontal_padding:20,opacity:.8,deeplinking:!1});
 		}
-		
+
 		//Main content margin bottom
 		if($(".footer-reveal").length > 0) {
 			var height = $(".footer").innerHeight();
 			$("#main").css("margin-bottom", height);
 		}
-		
+
 		//search button
 		$('.btn-open-popup-search').on('click',function(){
 			$(this).toggleClass("show-search");
@@ -53,10 +53,10 @@
 		$('.search-close').on('click', function() {
 			$('body').toggleClass('show-search');
 		});
-		
+
 		//Sticky Menu
 		$(".header-sticky").headroom();
-		
+
 		//Toggle Accordion
 		$(document).on('show.bs.collapse hide.bs.collapse', '.accordion', function(e) {
 			var $target = $(e.target)
@@ -66,12 +66,12 @@
 			if (e.type == 'hide')
 				$target.prev('.accordion-header').removeClass('active');
 		});
-		
+
 		//counter
 		$( '.counter-item' ).each( function() {
 			var $numbers = $(this).find('.number');
 			var animation = $(this).data('animation') ? $(this).data('animation') : 'counterUp';
-	
+
 			if (animation === 'odometer') {
 				var _number = $numbers.html();
 				var od      = new Odometer({
@@ -79,7 +79,7 @@
 					value: 0
 				});
 				od.render();
-	
+
 				$(this).waypoint(function() {
 					od.update(_number);
 				}, {
@@ -93,17 +93,17 @@
 				});
 			}
 		});
-		
+
 		//Onepage navigation
 		if($(".onepage-menu").length > 0) {
 			var offset = $('.onepage-menu').attr('data-offset');
-			if ($('.onepage-menu').length > 0) { 
+			if ($('.onepage-menu').length > 0) {
 				$('.onepage-menu').singlePageNav({ 'offset': offset, 'filter': '.onepage' });
 				$('.onepage-menu > li > a').removeClass("current");
 				$('.onepage-menu > li:first-child > a').addClass("current");
 			}
 		}
-		
+
 		/* Show Main Navigation for Header v7*/
 		$("#page-open-main-menu").on('click', function () {
 			$("#toggle-menu").toggleClass('open');
@@ -113,26 +113,26 @@
 		});
 		$('.cms-menu-toggle').on('click', function () {
 			if($(this).prev().hasClass('submenu-open')) {
-				$(this).prev().toggleClass('submenu-open');	
+				$(this).prev().toggleClass('submenu-open');
 			} else {
 				$('.sub-menu').removeClass('submenu-open');
 				$(this).prev().toggleClass('submenu-open');
 				$(this).parent('li').parent('.sub-menu').addClass('submenu-open');
 			}
 		});
-		
+
 		//toggle mini cart
 		$('#mini-cart').on('click', function() {
 			$(this).toggleClass("open");
 		});
-		
+
 		//Wavify
 		$( '.wavify-item' ).each( function () {
 			var _color     = $(this).data('wavify-background') ? $(this).data('wavify-background') : '#fff',
 				_height    = $(this).data('wavify-height') ? $(this).data('wavify-height') : 100,
 				_bones     = $(this).data('wavify-bones') ? $(this).data('wavify-bones') : 3,
 				_amplitude = $(this).data('wavify-amplitude') ? $(this).data('wavify-amplitude') : 80;
-	
+
 			$(this).children('path').wavify( {
 				height: _height,
 				bones: _bones,
@@ -141,14 +141,14 @@
 				speed: .15
 			});
 		});
-		
+
 		//Ajax popup
 		if($(".quickview-icon").length > 0) {
 			$('.quickview-icon').magnificPopup({
 				type: 'ajax'
 			});
 		}
-		
+
 		//Typed Text
 		if($("#typed").length > 0) {
 		  $("#typed").typed({
@@ -161,14 +161,14 @@
 			cursorChar: "|",
 		  });
 		}
-		
+
 		//SlimScroll
 		if($("#portfolio-main-info-wrap").length > 0) {
 			$("#portfolio-main-info-wrap").slimscroll({
 			  height: 'auto'
 			});
 		}
-		
+
 		//Toggle Mobile Menu
 		$('.page-open-mobile-menu, .page-close-mobile-menu').on('click',function(){
 			$('.page-mobile-main-menu').toggleClass('open');
@@ -181,34 +181,34 @@
 				$('.sub-menu').removeClass('open');
 				$(this).parent("a").next().toggleClass('open');
 				$(this).parent("a").parent('li').parent('.sub-menu').addClass('open');
-				
+
 				$('.toggle-sub-menu').removeClass('open');
 				$(this).parent('a').parent('li').parent('.sub-menu').siblings('a').children('.toggle-sub-menu').toggleClass('open');
 				$(this).toggleClass('open');
 			}
         });
-		
+
 		//Owl Carousel
 		OwlCarousel();
-		
+
 		//Hotspot
 		hotSpot();
-		
+
 		//Progress Bars
 		ProgressBar();
-		
+
 		/* background marque */
 		marqueBackground();
-		
+
 		//fullscreen
 		introHeight();
-		
+
 		//google map
 		googleMap();
-		
+
 		/* countdown */
 		Countdown();
-		
+
 		/* init revolution slider */
 		if ($("#rev_slider").length > 0) {
 			RevolutionInit();
@@ -244,7 +244,7 @@
 			RevolutionInit_11();
 		}
 	});
-	
+
 	$(document).ajaxComplete(function() {
   		//Owl Carousel
 		OwlCarousel();
@@ -400,7 +400,7 @@ function ProgressBar() {
 ===================================================================*/
 function googleMap() {
 	var gmMapDiv = $("#google-map").children(".map");
-	
+
 	if (gmMapDiv.length) {
 		var gmHeight = gmMapDiv.attr("data-height");
 		var gmWidth = gmMapDiv.attr("data-width");
@@ -618,7 +618,7 @@ function googleMap() {
 function hotSpot() {
 	$('.image-hotspot .hotspot-item').each(function() {
 		$(this).css({'bottom' : $(this).data("bottom") + 'px', 'left' : $(this).data("left") + 'px'});
-	
+
 		// mouse-on example
 		var mouseOnDiv = $(this);
 		var tipContent = $(
@@ -1060,12 +1060,12 @@ function RevolutionInit_7() {
 			disableFocusListener:false,
 		}
 	});
-	
+
 	var api = rev_slider7;
 	/* no need to edit below */
 	var divider = '/ ',
     	totalSlides, numberText;
-		
+
 	api.one('revolution.slide.onloaded', function() {
 		totalSlides = api.revmaxslide();
 		api.find('.slide-status-current').text(divider + totalSlides);

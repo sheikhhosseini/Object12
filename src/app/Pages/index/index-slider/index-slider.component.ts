@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SliderService} from "../../../services/slider.service";
 import {Slider} from "../../../DTOs/Slider/Slider";
 
+declare function OwlCarousel() : any;
 
 @Component({
   selector: 'app-index-slider',
@@ -25,9 +26,11 @@ export class IndexSliderComponent implements OnInit {
         });
       } else {
         this.sliders = s;
+        setInterval(() =>
+        {
+          OwlCarousel();
+        },100);
       }
-      console.log(this.sliders);
     });
   }
-
 }
