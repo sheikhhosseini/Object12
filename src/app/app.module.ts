@@ -10,6 +10,8 @@ import { IndexHotproductsComponent } from './pages/index/index-hotproducts/index
 import { IndexVideosComponent } from './pages/index/index-videos/index-videos.component';
 import { IndexNewsComponent } from './pages/index/index-news/index-news.component';
 import { IndexSocialComponent } from './pages/index/index-social/index-social.component';
+import {SliderService} from "./services/slider.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { IndexSocialComponent } from './pages/index/index-social/index-social.co
     IndexSocialComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SliderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
