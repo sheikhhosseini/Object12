@@ -13,7 +13,7 @@ export class IndexSliderComponent implements OnInit {
   constructor(private _sliderService: SliderService) {
   }
 
-  private sliders ?: Slider[];
+  public sliders : Slider[] = [];
 
   ngOnInit(): void {
     this._sliderService.GetCurrentSliders().subscribe(s => {
