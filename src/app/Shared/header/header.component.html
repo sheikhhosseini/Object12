@@ -65,16 +65,17 @@
               <nav class="menu menu--primary">
                 <ul>
                   <li class="menu-item-has-children mega-menu">
-                    <a href="/assets/index.html">
+                    <a [routerLink]="''">
                       <span class="sub-arrow">+</span>
-                      <span class="menu-item-title">صفحه اصلی</span>
+                      <span class="menu-item-title" routerLinkActive="MyActiveNav"
+                      [routerLinkActiveOptions]="{exact:true}">صفحه اصلی</span>
                       <span class="toggle-sub-menu"> </span>
                     </a>
                   </li>
                   <li class="menu-item-has-children">
                     <a href="/assets/#">
                       <span class="sub-arrow">+</span>
-                      <span class="menu-item-title">وبلاگ</span>
+                      <span class="menu-item-title">محصولات</span>
                       <span class="toggle-sub-menu"> </span>
                     </a>
                     <ul class="sub-menu">
@@ -94,6 +95,23 @@
                       </li>
                     </ul>
                   </li>
+
+                  <li class="menu-item-has-children mega-menu">
+                    <a [routerLink]="'contact-us'" >
+                      <span class="sub-arrow">+</span>
+                      <span class="menu-item-title" routerLinkActive="MyActiveNav">تماس با ما</span>
+                      <span class="toggle-sub-menu"> </span>
+                    </a>
+                  </li>
+
+                  <li class="menu-item-has-children mega-menu">
+                    <a [routerLink]="'about-us'" >
+                      <span class="sub-arrow">+</span>
+                      <span class="menu-item-title" routerLinkActive="MyActiveNav">درباره ما</span>
+                      <span class="toggle-sub-menu"> </span>
+                    </a>
+                  </li>
+
                 </ul>
               </nav>
             </div>
