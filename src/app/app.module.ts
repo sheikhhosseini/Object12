@@ -12,6 +12,9 @@ import { IndexNewsComponent } from './pages/index/index-news/index-news.componen
 import { IndexSocialComponent } from './pages/index/index-social/index-social.component';
 import {SliderService} from "./services/slider.service";
 import {HttpClientModule} from "@angular/common/http";
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -23,11 +26,14 @@ import {HttpClientModule} from "@angular/common/http";
     IndexHotproductsComponent,
     IndexVideosComponent,
     IndexNewsComponent,
-    IndexSocialComponent
+    IndexSocialComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [SliderService],
   bootstrap: [AppComponent]
