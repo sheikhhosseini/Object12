@@ -11,10 +11,11 @@ import { IndexVideosComponent } from './pages/index/index-videos/index-videos.co
 import { IndexNewsComponent } from './pages/index/index-news/index-news.component';
 import { IndexSocialComponent } from './pages/index/index-social/index-social.component';
 import {SliderService} from "./services/slider.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import {AppRoutingModule} from "./app-routing.module";
+import {MyInterceptor} from "./Utilites/MyInterceptor";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,14 @@ import {AppRoutingModule} from "./app-routing.module";
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [SliderService],
+  providers: [
+    SliderService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:MyInterceptor,
+      multi:true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

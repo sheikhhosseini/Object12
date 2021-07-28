@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SliderService} from "../../../services/slider.service";
 import {Slider} from "../../../DTOs/Slider/Slider";
+import {MyDomainName} from "../../../Utilites/PathTool";
 
 declare function OwlCarousel() : any;
 
@@ -15,6 +16,7 @@ export class IndexSliderComponent implements OnInit {
   }
 
   public sliders : Slider[] = [];
+  public myDomain :string = MyDomainName;
 
   ngOnInit(): void {
     this._sliderService.GetCurrentSliders().subscribe(s => {

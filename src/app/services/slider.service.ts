@@ -19,7 +19,7 @@ export class SliderService
 
   public GetSliders() : Observable<HomeSliderResponse>
   {
-    return  this._http.get<HomeSliderResponse>("https://localhost:44345/slider/GetActiveSlider");
+    return  this._http.get<HomeSliderResponse>("/slider/GetActiveSlider");
   }
 
   public GetCurrentSliders():Observable<Slider[]>
