@@ -3,22 +3,46 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h2>ورود</h2>
+          <h2 class="text-center">فرم ثبت نام</h2>
           <form class="commerce-form-login">
             <div class="form-item">
-              <label for="username">نام کاربری یا آدرس ایمیل <span class="required">*</span></label>
-              <input type="text" class="form-text" name="username" id="username" value="" />
+              <label for="password">نام <span class="required">*</span></label>
+              <input class="form-text form-control" type="password" name="password" id="password" />
+            </div>
+            <div class="form-item">
+              <label for="password">نام خانوادگی <span class="required">*</span></label>
+              <input class="form-text form-control" type="password" name="password" id="password" />
+            </div>
+            <div class="form-item">
+              <label for="password">شماره تلفن <span class="required">*</span></label>
+              <input class="form-text form-control" type="password" name="password" id="password" />
+            </div>
+
+            <div class="form-item">
+              <label for="username">آدرس ایمیل <span class="required">*</span></label>
+              <input type="text" class="form-text form-control" name="username" id="username" value="" />
             </div>
             <div class="form-item">
               <label for="password">رمزعبور <span class="required">*</span></label>
-              <input class="form-text" type="password" name="password" id="password" />
+              <input class="form-text form-control" type="password" name="password" id="password" />
             </div>
             <div class="form-item">
-              <button type="submit" class="button style-flat" name="login" value="Login">ورود</button>
-              <input class="form-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever"> <span>مرا به خاطر بسپار</span>
+              <label for="password">تکرار رمز عبور <span class="required">*</span></label>
+              <input class="form-text form-control" type="password" name="password" id="password" />
             </div>
             <div class="form-item">
-              <a href="#">رمز عبور خود را فراموش کرده اید؟</a>
+              <label for="password">جنیست <span class="required">*</span></label>
+
+              <label class="form-label mr-2" for="zan" >زن</label>
+              <input class="mx-2" type="radio" value="زن" name="gender" id="zan"/>
+              <label class="form-label mx-2 " for="mard" >مرد</label>
+              <input class="" type="radio" value="مرد" name="gender" id="mard"/>
+            </div>
+            <div class="form-item row justify-content-center">
+              <button type="submit" class="button style-flat col-sm-6" name="login" value="Login">ثبت نام</button>
+            </div>
+            <div class="form-item row justify-content-center">
+              <a routerLink="/login" class="col-sm-6 text-center">ورود به حساب کاربری</a>
             </div>
           </form>
         </div>
