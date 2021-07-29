@@ -18,6 +18,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {MyInterceptor} from "./Utilites/MyInterceptor";
 import { RegisterComponent } from './Pages/register/register.component';
 import { LoginComponent } from './Pages/login/login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { LoginComponent } from './Pages/login/login.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     SliderService,
