@@ -6,7 +6,7 @@ export class UserRegisterDto{
     public FirstName:string,
     public LastName:string,
     public MobileNumber:string,
-    public Gender:boolean,
+    public Gender:string,
   ) {
   }
 }

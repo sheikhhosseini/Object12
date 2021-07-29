@@ -19,6 +19,7 @@ import {MyInterceptor} from "./Utilites/MyInterceptor";
 import { RegisterComponent } from './Pages/register/register.component';
 import { LoginComponent } from './Pages/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AccountService} from "./services/account.service";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   ],
   providers: [
     SliderService,
+    AccountService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:MyInterceptor,

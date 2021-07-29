@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {assertNotNull} from "@angular/compiler/src/output/output_ast";
+import {UserRegisterDto} from "../../DTOs/Account/UserRegisterDto";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   public regitserForm !: FormGroup;
 
-  constructor() {
+  constructor(private _accountService : AccountService) {
 
   }
 
@@ -34,8 +36,19 @@ export class RegisterComponent implements OnInit {
   }
 
   SubmitRegisterForm() {
-    console.log(this.regitserForm);
+    const registerData = new UserRegisterDto(
+      this.regitserForm.controls.Email.value,
+      this.regitserForm.controls.Password.value,
+      this.regitserForm.controls.ConfirmPassword.value,
+      this.regitserForm.controls.FirstName.value,
+      this.regitserForm.controls.LastName.value,
+      this.regitserForm.controls.MobileNumber.value,
+      this.regitserForm.controls.Gender.value);
+
+    console.log(registerData);
+    this._accountService.RegisterUser(registerData).subscribe(response =>{
+      console.log(response);
+    });
+
   }
-
-
 }
