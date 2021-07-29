@@ -16,6 +16,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {MyInterceptor} from "./Utilites/MyInterceptor";
+import { RegisterComponent } from './Pages/register/register.component';
+import { LoginComponent } from './Pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {MyInterceptor} from "./Utilites/MyInterceptor";
     IndexNewsComponent,
     IndexSocialComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

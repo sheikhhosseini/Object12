@@ -106,8 +106,7 @@
 
 		/* Show Main Navigation for Header v7*/
 
-    function Mymenu()
-    {
+
       $("#page-open-main-menu").on('click', function () {
         $("#toggle-menu").toggleClass('open');
       });
@@ -123,7 +122,7 @@
           $(this).parent('li').parent('.sub-menu').addClass('submenu-open');
         }
       });
-    }
+
 
 
 		//toggle mini cart
@@ -175,8 +174,7 @@
 		}
 
 		//Toggle Mobile Menu
-    function Mymenu2()
-    {
+
       $('.page-open-mobile-menu, .page-close-mobile-menu').on('click',function(){
         $('.page-mobile-main-menu').toggleClass('open');
       });
@@ -194,7 +192,7 @@
           $(this).toggleClass('open');
         }
       });
-    }
+
 
 
 		//Owl Carousel
@@ -217,6 +215,7 @@
 
 		/* countdown */
 		Countdown();
+
 
 		/* init revolution slider */
 		if ($("#rev_slider").length > 0) {

@@ -65,7 +65,7 @@
               <nav class="menu menu--primary">
                 <ul>
                   <li class="menu-item-has-children mega-menu">
-                    <a [routerLink]="''">
+                    <a routerLink="">
                       <span class="sub-arrow">+</span>
                       <span class="menu-item-title" routerLinkActive="MyActiveNav"
                       [routerLinkActiveOptions]="{exact:true}">صفحه اصلی</span>
@@ -97,7 +97,23 @@
                   </li>
 
                   <li class="menu-item-has-children mega-menu">
-                    <a [routerLink]="'contact-us'" >
+                    <a routerLink="register" >
+                      <span class="sub-arrow">+</span>
+                      <span class="menu-item-title" routerLinkActive="MyActiveNav">ثبت نام</span>
+                      <span class="toggle-sub-menu"> </span>
+                    </a>
+                  </li>
+
+                  <li class="menu-item-has-children mega-menu">
+                    <a routerLink="login" >
+                      <span class="sub-arrow">+</span>
+                      <span class="menu-item-title" routerLinkActive="MyActiveNav">ورود</span>
+                      <span class="toggle-sub-menu"> </span>
+                    </a>
+                  </li>
+
+                  <li class="menu-item-has-children mega-menu">
+                    <a routerLink="contact-us" >
                       <span class="sub-arrow">+</span>
                       <span class="menu-item-title" routerLinkActive="MyActiveNav">تماس با ما</span>
                       <span class="toggle-sub-menu"> </span>
@@ -105,7 +121,7 @@
                   </li>
 
                   <li class="menu-item-has-children mega-menu">
-                    <a [routerLink]="'about-us'" >
+                    <a routerLink="about-us" >
                       <span class="sub-arrow">+</span>
                       <span class="menu-item-title" routerLinkActive="MyActiveNav">درباره ما</span>
                       <span class="toggle-sub-menu"> </span>
