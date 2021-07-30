@@ -20,6 +20,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { LoginComponent } from './Pages/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AccountService} from "./services/account.service";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {AccountService} from "./services/account.service";
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     SliderService,
