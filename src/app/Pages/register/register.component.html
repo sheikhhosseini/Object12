@@ -7,39 +7,86 @@
           <form [formGroup]="regitserForm" (ngSubmit)="SubmitRegisterForm()" class="commerce-form-login">
             <div class="form-item">
               <label for="password">نام <span class="required">*</span></label>
-              <input formControlName="FirstName" class="form-text form-control" type="text" name="password"  />
+              <input formControlName="FirstName" class="form-text form-control " type="text" name="password"  />
+              <li *ngIf="regitserForm.controls.FirstName.errors?.required && regitserForm.controls.FirstName.touched" class="text-danger" >
+                لطفا نام را وارد کنید
+              </li>
+              <li *ngIf="regitserForm.controls.FirstName.errors?.maxlength && regitserForm.controls.FirstName.touched" class="text-danger" >
+                تعداد کارراکتر های مجاز این فیلد 100 میباشد
+              </li>
             </div>
             <div class="form-item">
               <label for="password">نام خانوادگی <span class="required">*</span></label>
               <input formControlName="LastName" class="form-text form-control" type="text" name="password"  />
+              <li *ngIf="regitserForm.controls.LastName.errors?.required && regitserForm.controls.LastName.touched" class="text-danger" >
+                لطفا نام خانوادگی را وارد کنید
+              </li>
+              <li *ngIf="regitserForm.controls.LastName.errors?.maxlength && regitserForm.controls.LastName.touched" class="text-danger" >
+                تعداد کارراکتر های مجاز این فیلد 100 میباشد
+              </li>
             </div>
             <div class="form-item">
               <label for="password">شماره تلفن <span class="required">*</span></label>
               <input formControlName="MobileNumber" class="form-text form-control" type="text" name="password" />
+              <li *ngIf="regitserForm.controls.MobileNumber.errors?.required && regitserForm.controls.MobileNumber.touched" class="text-danger" >
+                لطفا شماره تلفن همراه خود را وارد کنید را وارد کنید
+              </li>
+              <li *ngIf="(regitserForm.controls.MobileNumber.errors?.maxlength && regitserForm.controls.MobileNumber.touched) ||
+               (regitserForm.controls.MobileNumber.errors?.minlength && regitserForm.controls.MobileNumber.touched)" class="text-danger" >
+                فرمت صحیح تلفن مجاز 11 رقم است
+              </li>
+              <li *ngIf="regitserForm.controls.MobileNumber.errors?.pattern && regitserForm.controls.MobileNumber.touched" class="text-danger" >
+                حروف در این فیلد مجاز نیست
+              </li>
             </div>
 
             <div class="form-item">
               <label for="username">آدرس ایمیل <span class="required">*</span></label>
               <input formControlName="Email" type="text" class="form-text form-control" name="username" id="username" value="" />
+              <li *ngIf="regitserForm.controls.Email.errors?.required && regitserForm.controls.Email.touched" class="text-danger" >
+                لطفا ایمیل خود را وارد کنید
+              </li>
+              <li *ngIf="regitserForm.controls.Email.errors?.maxlength && regitserForm.controls.Email.touched" class="text-danger" >
+                تعداد کارراکتر های مجاز این فیلد 100 میباشد
+              </li>
+              <li *ngIf="regitserForm.controls.Email.errors?.email && regitserForm.controls.Email.touched" class="text-danger" >
+                فرمت ایمیل وارد شده صحیح نمیباشد
+              </li>
             </div>
             <div class="form-item">
               <label for="password">رمزعبور <span class="required">*</span></label>
               <input formControlName="Password" class="form-text form-control" type="password" name="password"  />
+              <li *ngIf="regitserForm.controls.Password.errors?.required && regitserForm.controls.Password.touched" class="text-danger" >
+                لطفا رمز عبور خود را وارد کنید
+              </li>
+              <li *ngIf="(regitserForm.controls.Password.errors?.maxlength && regitserForm.controls.Password.touched) ||
+                    (regitserForm.controls.Password.errors?.minlength && regitserForm.controls.Password.touched)" class="text-danger" >
+                تعداد کاراکتر های مجاز برای رمز عبور : حد اقل 4 کاراکتر و حد اکثر 15 کاراکتر میباشد
+              </li>
             </div>
             <div class="form-item">
               <label for="password">تکرار رمز عبور <span class="required">*</span></label>
               <input formControlName="ConfirmPassword" class="form-text form-control" type="password" name="password" id="password" />
+              <li *ngIf="regitserForm.controls.ConfirmPassword.errors?.required && regitserForm.controls.ConfirmPassword.touched" class="text-danger" >
+                لطفا رمز عبور خود را مجدد وارد کنید
+              </li>
+              <li *ngIf="(regitserForm.controls.ConfirmPassword.errors?.maxlength && regitserForm.controls.ConfirmPassword.touched) ||
+                    (regitserForm.controls.ConfirmPassword.errors?.minlength && regitserForm.controls.ConfirmPassword.touched)" class="text-danger" >
+                تعداد کاراکتر های مجاز برای رمز عبور : حد اقل 4 کاراکتر و حد اکثر 15 کاراکتر میباشد
+              </li>
             </div>
             <div class="form-item">
               <label for="password">جنیست <span class="required">*</span></label>
-
               <label class="form-label mr-2" for="zan" >زن</label>
               <input formControlName="Gender" class="mx-2" type="radio" value="false" name="Gender" id="zan"/>
               <label class="form-label mx-2 " for="mard" >مرد</label>
               <input formControlName="Gender" class="" type="radio" value="true" name="Gender" id="mard"/>
+              <li *ngIf="regitserForm.controls.Gender.errors?.required" class="text-danger" >
+                لطفا جنسیت را انتخاب کنید
+              </li>
             </div>
             <div class="form-item row justify-content-center">
-              <button type="submit" class="button style-flat col-sm-6" name="login" value="Login">ثبت نام</button>
+              <button [disabled]="regitserForm.invalid" type="submit" class="btn btn-primary col-sm-6" name="login" value="Login">ثبت نام</button>
             </div>
             <div class="form-item row justify-content-center">
               <a routerLink="/login" class="col-sm-6 text-center">ورود به حساب کاربری</a>
