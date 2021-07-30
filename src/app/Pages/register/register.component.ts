@@ -4,6 +4,7 @@ import {assertNotNull} from "@angular/compiler/src/output/output_ast";
 import {UserRegisterDto} from "../../DTOs/Account/UserRegisterDto";
 import {AccountService} from "../../services/account.service";
 import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,8 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('EmailExistSwal') public readonly EmailExistSwal!: SwalComponent;
   @ViewChild('SuccessSwal') public readonly SuccessSwal!: SwalComponent;
-  constructor(private _accountService : AccountService) {
-
+  constructor(private _accountService : AccountService ,
+              private _route : Router) {
   }
 
   ngOnInit(): void {
@@ -85,6 +86,7 @@ export class RegisterComponent implements OnInit {
       if (response.status === "Success") {
         this.regitserForm.reset();
         this.SuccessSwal.fire();
+        this._route.navigate(['/login'] , {queryParams : {NewRegisterStatus : true , UsernameText : registerData.Email}});
       }
       if (response.data === "EmailExist") {
         this.regitserForm.controls.Email.reset();

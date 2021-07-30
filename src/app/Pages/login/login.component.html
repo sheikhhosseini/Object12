@@ -4,6 +4,12 @@
       <div class="row">
         <div class="col-lg-12">
           <h2 class="text-center">فرم ورود</h2>
+          <div *ngIf="NewRegisterStatus" class="alert alert-success" role="alert">
+            <h4 class="alert-heading">با تشکر از ثبت نام شما</h4>
+            <p>کاربر گرامی{{UsernameText}} ثبت نام شما با موفقیت انجام شد</p>
+            <hr>
+            <p class="mb-0">با وارد کردن نام کاربری و رمز عبور خود در همین صفحه میتوانید وارد حساب خود شوید</p>
+          </div>
           <form class="commerce-form-login">
             <div class="form-item">
               <label for="username">نام کاربری یا آدرس ایمیل <span class="required">*</span></label>
