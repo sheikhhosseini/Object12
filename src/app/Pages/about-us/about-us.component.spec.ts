@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// @ts-ignore
 import { AboutUsComponent } from './about-us.component';
 
 describe('AboutUsComponent', () => {

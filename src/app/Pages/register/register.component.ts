@@ -75,32 +75,33 @@ export class RegisterComponent implements OnInit {
 
   SubmitRegisterForm() {
 
-    console.log(this.regitserForm);
-    const registerData = new UserRegisterDto(
-      this.regitserForm.controls.Email.value,
-      this.regitserForm.controls.Password.value,
-      this.regitserForm.controls.ConfirmPassword.value,
-      this.regitserForm.controls.FirstName.value,
-      this.regitserForm.controls.LastName.value,
-      this.regitserForm.controls.MobileNumber.value,
-      this.regitserForm.controls.Gender.value);
+    //console.log(this.regitserForm);
+    if (this.regitserForm.valid) {
+      const registerData = new UserRegisterDto(
+        this.regitserForm.controls.Email.value,
+        this.regitserForm.controls.Password.value,
+        this.regitserForm.controls.ConfirmPassword.value,
+        this.regitserForm.controls.FirstName.value,
+        this.regitserForm.controls.LastName.value,
+        this.regitserForm.controls.MobileNumber.value,
+        this.regitserForm.controls.Gender.value);
 
-    //console.log(registerData);
-    this._accountService.RegisterUser(registerData).subscribe(response =>{
-      console.log(response);
-      if (response.status === "Success") {
-        this.regitserForm.reset();
-        this.SuccessSwal.fire();
-        this._route.navigate(['/login'] , {queryParams : {NewRegisterStatus : true , UsernameText : registerData.Email}});
-      }
-      if (response.data === "EmailExist") {
-        this.regitserForm.controls.Email.reset();
-        let email = document.getElementById('email');
-        // @ts-ignore
-        email.classList.add('EmailExist');
-        this.EmailExistSwal.fire();
-      }
-    });
-
+      //console.log(registerData);
+      this._accountService.RegisterUser(registerData).subscribe(response =>{
+        console.log(response);
+        if (response.status === "Success") {
+          this.regitserForm.reset();
+          this.SuccessSwal.fire();
+          this._route.navigate(['/login'] , {queryParams : {NewRegisterStatus : true , UsernameText : registerData.Email}});
+        }
+        if (response.data === "EmailExist") {
+          this.regitserForm.controls.Email.reset();
+          let email = document.getElementById('email');
+          // @ts-ignore
+          email.classList.add('EmailExist');
+          this.EmailExistSwal.fire();
+        }
+      });
+    }
   }
 }
