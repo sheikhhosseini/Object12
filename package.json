@@ -20,6 +20,7 @@
     "@angular/router": "~12.1.1",
     "@sweetalert2/ngx-sweetalert2": "^10.0.0",
     "@types/jquery": "^3.5.6",
+    "ngx-cookie-service": "^2.4.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.0.20",
     "tslib": "^2.2.0",

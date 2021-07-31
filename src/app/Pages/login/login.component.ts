@@ -5,6 +5,7 @@ import {UserRegisterDto} from "../../DTOs/Account/UserRegisterDto";
 import {UserLoginDto} from "../../DTOs/Account/UserLoginDto";
 import {AccountService} from "../../services/account.service";
 import {CurrentUserDto} from "../../DTOs/Account/CurrentUserDto";
+import {CookieService} from "ngx-cookie-service";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   NewRegisterStatus : boolean = false;
   UsernameText : string = '';
-  constructor(private _route : ActivatedRoute , private _loginService : AccountService)
+  constructor(private _route : ActivatedRoute , private _accountService : AccountService ,
+              private _cookie : CookieService)
   {
     this._route.queryParams.subscribe(params => {
       this.UsernameText = params['UsernameText'];
@@ -55,14 +57,17 @@ export class LoginComponent implements OnInit {
       const LoginData = new UserLoginDto(
         this.LoginForm.controls.Email.value,
         this.LoginForm.controls.Password.value);
-        this._loginService.LoginUser(LoginData).subscribe(response =>{
-        const currentUser = new CurrentUserDto(
-          response.data.firstName,
-          response.data.userId);
-        this._loginService.SetCurentUser(currentUser);
-        this._loginService.GetCurentUser().subscribe(user=>{
-          console.log(user);
-        });
+        this._accountService.LoginUser(LoginData).subscribe(response =>{
+          if (response.status === "Success")
+          {
+            const currentUser = new CurrentUserDto(
+              response.data.firstName,
+              response.data.userId);
+            this._accountService.SetCurentUser(currentUser);
+            this._accountService.GetCurentUser().subscribe(user=>{
+              this._cookie.set('Object13' , response.data.token,0,"","",true);
+            });
+          }
     });
   }
 }
