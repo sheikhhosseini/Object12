@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,9 @@ export class LoginComponent implements OnInit {
       this.NewRegisterStatus = params['NewRegisterStatus'];
     });
   }
+
+  form: FormGroup = new FormGroup({});
+
 
   ngOnInit(): void {
   }

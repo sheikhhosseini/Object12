@@ -74,6 +74,9 @@
                     (regitserForm.controls.ConfirmPassword.errors?.minlength && regitserForm.controls.ConfirmPassword.touched)" class="text-danger" >
                 تعداد کاراکتر های مجاز برای رمز عبور : حد اقل 4 کاراکتر و حد اکثر 15 کاراکتر میباشد
               </li>
+              <li *ngIf="regitserForm.controls.ConfirmPassword.errors?.matching && regitserForm.controls.ConfirmPassword.touched" class="text-danger" >
+                پسورد با تکرار پسورد باید یکسان باشد!
+              </li>
             </div>
             <div class="form-item">
               <label for="password">جنیست <span class="required">*</span></label>

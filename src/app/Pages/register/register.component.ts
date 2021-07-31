@@ -5,6 +5,8 @@ import {UserRegisterDto} from "../../DTOs/Account/UserRegisterDto";
 import {AccountService} from "../../services/account.service";
 import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
 import {Router} from "@angular/router";
+import Validation from '../../Utilites/Validation';
+
 
 @Component({
   selector: 'app-register',
@@ -18,8 +20,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('EmailExistSwal') public readonly EmailExistSwal!: SwalComponent;
   @ViewChild('SuccessSwal') public readonly SuccessSwal!: SwalComponent;
   constructor(private _accountService : AccountService ,
-              private _route : Router) {
-  }
+              private _route : Router) {}
 
   ngOnInit(): void {
     this.regitserForm = new FormGroup({
@@ -41,7 +42,8 @@ export class RegisterComponent implements OnInit {
         [
           Validators.maxLength(15),
           Validators.minLength(4),
-          Validators.required
+          Validators.required,
+
         ]),
       FirstName: new FormControl(null,
         [
@@ -65,8 +67,11 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(15),
           Validators.required
         ]),
+    },{
+      validators: [Validation.match('Password', 'ConfirmPassword')]
     });
   }
+
 
   SubmitRegisterForm() {
 
