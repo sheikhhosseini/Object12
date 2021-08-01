@@ -64,8 +64,11 @@ export class LoginComponent implements OnInit {
               response.data.firstName,
               response.data.userId);
             this._accountService.SetCurentUser(currentUser);
+            var twentyMinutesLater = new Date();
+            twentyMinutesLater.setMinutes(twentyMinutesLater.getMinutes() + 1);
+            console.log(twentyMinutesLater);
             this._accountService.GetCurentUser().subscribe(user=>{
-              this._cookie.set('Object13' , response.data.token,0,"","",true);
+              this._cookie.set('Object13' , response.data.token,twentyMinutesLater,"","",true);
             });
           }
     });
