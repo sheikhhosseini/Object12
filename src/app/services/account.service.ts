@@ -34,4 +34,8 @@ export class AccountService {
   LoginUser(loginData: UserLoginDto): Observable<IUserLogin> {
     return this._http.post<IUserLogin>("/account/login", loginData);
   }
+
+  CheckUserAuth() : Observable<any>{
+    return this._http.post<any>("/account/checkuserauth", null);
+  }
 }
