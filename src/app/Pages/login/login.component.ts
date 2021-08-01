@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserRegisterDto} from "../../DTOs/Account/UserRegisterDto";
@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
 
   public LoginForm !: FormGroup;
 
-  NewRegisterStatus : boolean = false;
-  UsernameText : string = '';
-  constructor(private _route : ActivatedRoute , private _accountService : AccountService ,
-              private _cookie : CookieService)
-  {
+  NewRegisterStatus: boolean = false;
+  UsernameText: string = '';
+
+  constructor(private _route: ActivatedRoute, private _accountService: AccountService,
+              private _cookie: CookieService) {
     this._route.queryParams.subscribe(params => {
       this.UsernameText = params['UsernameText'];
       this.NewRegisterStatus = params['NewRegisterStatus'];
@@ -48,30 +48,35 @@ export class LoginComponent implements OnInit {
           Validators.minLength(4),
           Validators.required
         ]),
+      RememberMe: new FormControl(null,
+        [
+          Validators.maxLength(5),
+        ]),
     });
   }
 
-  SubmitLoginForm()
-  {
-    if (this.LoginForm.valid){
+  SubmitLoginForm() {
+    if (this.LoginForm.valid) {
+
       const LoginData = new UserLoginDto(
         this.LoginForm.controls.Email.value,
-        this.LoginForm.controls.Password.value);
-        this._accountService.LoginUser(LoginData).subscribe(response =>{
-          if (response.status === "Success")
-          {
-            const currentUser = new CurrentUserDto(
-              response.data.firstName,
-              response.data.userId);
-            this._accountService.SetCurentUser(currentUser);
-            var twentyMinutesLater = new Date();
-            twentyMinutesLater.setMinutes(twentyMinutesLater.getMinutes() + 1);
-            console.log(twentyMinutesLater);
-            this._accountService.GetCurentUser().subscribe(user=>{
-              this._cookie.set('Object13' , response.data.token,twentyMinutesLater,"","",true);
-            });
-          }
-    });
+        this.LoginForm.controls.Password.value,
+        this.LoginForm.controls.RememberMe.value == null ? "false" :  this.LoginForm.controls.RememberMe.value.toString());
+      // console.log(LoginData);
+      this._accountService.LoginUser(LoginData).subscribe(response => {
+        if (response.status === "Success") {
+          const currentUser = new CurrentUserDto(
+            response.data.firstName,
+            response.data.userId);
+          this._accountService.SetCurentUser(currentUser);
+          // var twentyMinutesLater = new Date();
+          // twentyMinutesLater.setMinutes(twentyMinutesLater.getMinutes() + 1);
+          // console.log(twentyMinutesLater);
+          this._accountService.GetCurentUser().subscribe(user => {
+            this._cookie.set('Object13', response.data.token, response.data.expireTime, "", "", true);
+          });
+        }
+      });
+    }
   }
-}
 }

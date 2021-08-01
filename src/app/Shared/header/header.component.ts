@@ -24,13 +24,16 @@ export class HeaderComponent implements OnInit{
   LogOutUser()
   {
     // this._accountService.LogOutUser().subscribe(res=>{
-    //   if (res.status === "Success")
-    //   {
-    //     console.log("Log Out Success");
-    //   }
+    //   // if (res.status === "Success")
+    //   // {
+    //   //   console.log("Log Out Success");
+    //   // }
+    //   console.log(res);
     // });
-    this._cookieService.delete('Object13');
     this._accountService.SetCurentUser(null);
+    this._cookieService.delete('Object13');
+    console.log("cookie Deleted");
+
   }
 
 }

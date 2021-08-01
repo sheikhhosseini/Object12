@@ -36,7 +36,7 @@
               </li>
             </div>
             <div class="form-item">
-              <input class="form-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever"> <label for="rememberme">مرا به خاطر بسپار</label>
+              <input formControlName="RememberMe" class="form-checkbox" type="checkbox" id="rememberme" value="false"> <label for="rememberme">مرا به خاطر بسپار</label>
             </div>
             <div class="form-item row justify-content-center">
               <button [disabled]="LoginForm.invalid" type="submit" class="btn btn-primary col-sm-6" name="login" value="Login">ورود</button>
