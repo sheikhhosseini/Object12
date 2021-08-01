@@ -53,3 +53,22 @@
     </div>
   </div>
 </div>
+<swal
+  #WrongData
+  title="خطا"
+  text="اطلاعات وارد شده صحیح نمیباشد لطفا مجددا تلاش کنید"
+  icon="error"
+  confirmButtonText="تایید"
+  [showConfirmButton]="true"
+  [timer]="8000">
+</swal>
+
+<swal
+  #NotActivated
+  title="توجه!"
+  text="حساب کاربری شما فعال نیست لطفا نسبت به فعال سازی حساب خود اقدام کنید"
+  icon="warning"
+  confirmButtonText="تایید"
+  [showConfirmButton]="true"
+  [timer]="8000">
+</swal>

@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserRegisterDto} from "../../DTOs/Account/UserRegisterDto";
 import {UserLoginDto} from "../../DTOs/Account/UserLoginDto";
 import {AccountService} from "../../services/account.service";
 import {CurrentUserDto} from "../../DTOs/Account/CurrentUserDto";
 import {CookieService} from "ngx-cookie-service";
+import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
 
 
 @Component({
@@ -15,13 +16,14 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class LoginComponent implements OnInit {
 
-
+  @ViewChild('WrongData') public readonly WrongData!: SwalComponent;
+  @ViewChild('NotActivated') public readonly NotActivated!: SwalComponent;
   public LoginForm !: FormGroup;
 
   NewRegisterStatus: boolean = false;
   UsernameText: string = '';
 
-  constructor(private _route: ActivatedRoute, private _accountService: AccountService,
+  constructor(private _route: ActivatedRoute, private _accountService: AccountService,private _router : Router,
               private _cookie: CookieService) {
     this._route.queryParams.subscribe(params => {
       this.UsernameText = params['UsernameText'];
@@ -57,7 +59,6 @@ export class LoginComponent implements OnInit {
 
   SubmitLoginForm() {
     if (this.LoginForm.valid) {
-
       const LoginData = new UserLoginDto(
         this.LoginForm.controls.Email.value,
         this.LoginForm.controls.Password.value,
@@ -75,6 +76,15 @@ export class LoginComponent implements OnInit {
           this._accountService.GetCurentUser().subscribe(user => {
             this._cookie.set('Object13', response.data.token, response.data.expireTime, "", "", true);
           });
+          this._router.navigate(['/']);
+        }
+        if (response.status === "NotFound") {
+          this.LoginForm.reset();
+          this.WrongData.fire();
+        }
+        if (response.status === "UserNotActivated") {
+          this.LoginForm.reset();
+          this.NotActivated.fire();
         }
       });
     }
