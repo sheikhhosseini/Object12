@@ -122,7 +122,7 @@
                   <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
                     <a routerLink="login" >
                       <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav">خروج</span>
+                      <span class="menu-item-title" (click)="LogOutUser()">خروج</span>
                       <span class="toggle-sub-menu"> </span>
                     </a>
                   </li>

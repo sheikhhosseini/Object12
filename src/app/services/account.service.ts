@@ -23,7 +23,7 @@ export class AccountService {
     return this.currentUser;
   }
 
-  SetCurentUser(user : CurrentUserDto) : void{
+  SetCurentUser(user : CurrentUserDto | any) : void{
     this.currentUser.next(user);
   }
 
@@ -37,5 +37,9 @@ export class AccountService {
 
   CheckUserAuth() : Observable<any>{
     return this._http.post<any>("/account/checkuserauth", null);
+  }
+
+  LogOutUser():Observable<any> {
+   return  this._http.get("/account/logout");
   }
 }
