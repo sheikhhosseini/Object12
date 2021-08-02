@@ -4,11 +4,19 @@
       <div class="row">
         <div class="col-lg-12">
           <h2 class="text-center">فرم ورود</h2>
-          <div *ngIf="NewRegisterStatus" class="alert alert-success" role="alert">
+          <div *ngIf="NewRegisterStatus" class="alert alert-warning" role="alert">
             <h4 class="alert-heading">با تشکر از ثبت نام شما</h4>
             <p>کاربر گرامی{{UsernameText}} ثبت نام شما با موفقیت انجام شد</p>
             <hr>
-            <p class="mb-0">با وارد کردن نام کاربری و رمز عبور خود در همین صفحه میتوانید وارد حساب خود شوید</p>
+            <p class="mb-0">جهت فعالسازی حساب خود ابتدا ایمیل فعال سازی خود را تایید کنید و سپس وارد سایت شوید</p>
+            <p class="mb-0">اگر ایمیل فعالسازی را دریافت نکرده اینجا کلیک کنید ..</p>
+          </div>
+          <div *ngIf="ActivatedAccount" class="alert alert-success" role="alert">
+            <h4 class="alert-heading">عملیات فعال سازی با موفقیت انجام شد</h4>
+            <p>کاربر گرامی حساب شما با موفقیت فعال سازی شد میتوانید از همین صفحه وارد حساب خود شوید</p>
+            <hr>
+            <p class="mb-0"></p>
+            <p class="mb-0"></p>
           </div>
           <form [formGroup]="LoginForm" (ngSubmit)="SubmitLoginForm()" class="commerce-form-login">
             <div class="form-item">
@@ -71,4 +79,14 @@
   confirmButtonText="تایید"
   [showConfirmButton]="true"
   [timer]="8000">
+</swal>
+
+<swal
+  #SuccessSwal
+  title="تبریک!"
+  text="ثبت نام شما با موفقیت در سایت انجام شد"
+  icon="success"
+  confirmButtonText="تایید"
+  [showConfirmButton]="true"
+  [timer]="5000">
 </swal>

@@ -1,1 +1,18 @@
-<p>activate-account works!</p>
+<div class="row justify-content-center">
+  <div *ngIf="!Validation" class="alert alert-danger col-sm-6" role="alert">
+    <h4 class="alert-heading">خطا</h4>
+    <p>کاربر گرامی لینک مورد نظر معتبر نیست لطفا با پشتیبانی سایت تماس بگیرید</p>
+    <hr>
+    <p class="mb-0"><a routerLink="/contact-us">تماس با ما</a></p>
+    <p class="mb-0"><a routerLink="/">خانه</a></p>
+  </div>
+
+
+<!--<button></button>-->
+<!--  <button class="btn btn-primary" type="button" disabled>-->
+<!--    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>-->
+<!--    در حال پردازش.....-->
+<!--  </button>-->
+<!--</div>-->
+
+

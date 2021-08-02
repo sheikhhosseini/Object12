@@ -18,8 +18,10 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('WrongData') public readonly WrongData!: SwalComponent;
   @ViewChild('NotActivated') public readonly NotActivated!: SwalComponent;
+  @ViewChild('SuccessSwal') public readonly SuccessSwal!: SwalComponent;
   public LoginForm !: FormGroup;
 
+  ActivatedAccount: boolean = false;
   NewRegisterStatus: boolean = false;
   UsernameText: string = '';
 
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     this._route.queryParams.subscribe(params => {
       this.UsernameText = params['UsernameText'];
       this.NewRegisterStatus = params['NewRegisterStatus'];
+      this.ActivatedAccount = params['activatedAccount'];
     });
   }
 

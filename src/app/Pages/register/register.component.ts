@@ -16,9 +16,12 @@ import Validation from '../../Utilites/Validation';
 export class RegisterComponent implements OnInit {
 
   public regitserForm !: FormGroup;
-
+  @ViewChild('ProcessSwal') public readonly ProcessSwal!: SwalComponent;
   @ViewChild('EmailExistSwal') public readonly EmailExistSwal!: SwalComponent;
-  @ViewChild('SuccessSwal') public readonly SuccessSwal!: SwalComponent;
+
+
+  proccess = false;
+
   constructor(private _accountService : AccountService ,
               private _route : Router) {}
 
@@ -85,22 +88,25 @@ export class RegisterComponent implements OnInit {
         this.regitserForm.controls.LastName.value,
         this.regitserForm.controls.MobileNumber.value,
         this.regitserForm.controls.Gender.value);
-
+      this.ProcessSwal.fire();
       //console.log(registerData);
       this._accountService.RegisterUser(registerData).subscribe(response =>{
-        console.log(response);
+       // console.log(response);
         if (response.status === "Success") {
+          this.ProcessSwal.close();
           this.regitserForm.reset();
-          this.SuccessSwal.fire();
+
           this._route.navigate(['/login'] , {queryParams : {NewRegisterStatus : true , UsernameText : registerData.Email}});
         }
         if (response.data === "EmailExist") {
+          this.ProcessSwal.close();
           this.regitserForm.controls.Email.reset();
           let email = document.getElementById('email');
           // @ts-ignore
           email.classList.add('EmailExist');
           this.EmailExistSwal.fire();
         }
+        this.ProcessSwal.close();
       });
     }
   }

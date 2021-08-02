@@ -105,6 +105,19 @@
 </div>
 
 <swal
+  #ProcessSwal
+  title="لطفا منتظر بمانید"
+  icon="info"
+  html="<button class='btn btn-primary' type='button' disabled>
+  <span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span>
+  در حال پردازش.....
+  </button>"
+  backdrop="rgba(0,0,123,0.4)"
+  [showConfirmButton]="false"
+  [timer]="50000">
+</swal>
+
+<swal
   #EmailExistSwal
   title="خطا"
   text="ایمیل مورد نظر در سایت موجود میباشد ! لطفا ایمیل دیگری را وارد کنید"
@@ -114,12 +127,6 @@
   [timer]="5000">
 </swal>
 
-<swal
-  #SuccessSwal
-  title="تبریک!"
-  text="ثبت نام شما با موفقیت در سایت انجام شد"
-  icon="success"
-  confirmButtonText="تایید"
-  [showConfirmButton]="true"
-  [timer]="5000">
-</swal>
+
+
+
