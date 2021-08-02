@@ -22,6 +22,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AccountService} from "./services/account.service";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { CookieService } from "ngx-cookie-service";
+import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CookieService } from "ngx-cookie-service";
     AboutUsComponent,
     ContactUsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,

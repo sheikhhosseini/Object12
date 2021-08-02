@@ -42,4 +42,9 @@ export class AccountService {
   LogOutUser():Observable<any> {
    return  this._http.post("/account/logout",null);
   }
+
+  ActivateUser(activeCode:string) : Observable<any>
+  {
+    return this._http.get("/account/activate-account/" + activeCode);
+  }
 }
