@@ -6,6 +6,7 @@ import {ContactUsComponent} from "./pages/contact-us/contact-us.component";
 import {LoginComponent} from "./Pages/login/login.component";
 import {RegisterComponent} from "./Pages/register/register.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
+import {ProductsComponent} from "./Pages/products/products.component";
 
 const routes: Routes =
   [
@@ -14,6 +15,7 @@ const routes: Routes =
     {path : 'contact-us' , component : ContactUsComponent},
     {path : 'login' , component : LoginComponent},
     {path : 'register' , component : RegisterComponent},
+    {path : 'products' , component : ProductsComponent},
     {path : 'activate-account/:activeCode' , component : ActivateAccountComponent}
     // {path : '**' , component : NotfoundComponent}
   ];

@@ -23,6 +23,7 @@ import {AccountService} from "./services/account.service";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { CookieService } from "ngx-cookie-service";
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
+import { ProductsComponent } from './Pages/products/products.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ActivateAccountComponent } from './pages/activate-account/activate-acco
     ContactUsComponent,
     RegisterComponent,
     LoginComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

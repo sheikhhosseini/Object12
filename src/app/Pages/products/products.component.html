@@ -1,0 +1,469 @@
+<div id="main">
+  <div class="section pt-10 pb-10">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="widget widget-search">
+              <form class="search-form" action="#">
+                <input type="search" class="search-field" placeholder="جستجوی کلید واژه..." value="" name="s" title="جستجو برای:" />
+                <button type="submit" class="search-submit">
+                  <span class="search-btn-icon fa fa-search"></span>
+                  <span class="search-btn-text">جستجو</span>
+                </button>
+              </form>
+            </div>
+            <div class="widget widget_categories">
+              <ul>
+                <li class="cat-item"><a href="#">تجهیزات جانبی <span class="count">2</span></a></li>
+                <li class="cat-item"><a href="#">گوشی ها <span class="count">1</span></a></li>
+                <li class="cat-item"><a href="#">فونت <span class="count">3</span></a></li>
+                <li class="cat-item"><a href="#">گرافیک <span class="count">1</span></a></li>
+                <li class="cat-item"><a href="#">هدفون ها <span class="count">4</span></a></li>
+                <li class="cat-item"><a href="#">اسپیکرها <span class="count">2</span></a></li>
+              </ul>
+            </div>
+            <div class="widget widget_price_filter">
+              <h3 class="widget-title">فیلتر توسط قیمت</h3>
+              <div class="price_slider_wrapper">
+                <div class="price_slider" style="display:none;"></div>
+                <div class="price_slider_amount">
+                  <input type="text" id="min_price" name="min_price" value="" data-min="0" placeholder="حداقل قیمت"/>
+                  <input type="text" id="max_price" name="max_price" value="" data-max="150" placeholder="حداکثر قیمت"/>
+                  <button type="submit" class="button style-flat button-xs button-secondary">فیلتر</button>
+                  <div class="price_label" style="display:none;">
+                    قیمت: <span class="from"></span> &mdash; <span class="to"></span>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </div>
+            </div>
+            <div class="widget widget_top_rated_products">
+              <h3 class="widget-title">محصولات با بالاترین امتیاز</h3>
+              <ul class="product_list_widget">
+                <li>
+                  <div class="product-item">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <img width="150" height="150" src="/assets/images/shop/thumb/shop_1.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="product-info">
+                      <h6 class="product-title">
+                        <a href="shop-detail.html">اسپیکرها بلوتوث قدرتمند</a>
+                      </h6>
+                      <span class="price">47.00 تومان تومان</span>
+                      <div class="star-rating">
+                        <span style="width:100%"></span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-item">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <img width="150" height="150" src="/assets/images/shop/thumb/shop_2.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="product-info">
+                      <h6 class="product-title">
+                        <a href="shop-detail.html">اسپیکرها بلوتوث قدرتمند</a>
+                      </h6>
+                      <span class="price">27.00 تومان - 47.00 تومان تومان</span>
+                      <div class="star-rating">
+                        <span style="width:90%"></span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-item">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <img width="150" height="150" src="/assets/images/shop/thumb/shop_3.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="product-info">
+                      <h6 class="product-title">
+                        <a href="shop-detail.html">اسپیکرها بلوتوث قدرتمند هدفون ها</a>
+                      </h6>
+                      <span class="price">47.00 تومان تومان</span>
+                      <div class="star-rating">
+                        <span style="width:80%"></span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-item">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <img width="150" height="150" src="/assets/images/shop/thumb/shop_4.jpg" alt="" />
+                      </a>
+                    </div>
+                    <div class="product-info">
+                      <h6 class="product-title">
+                        <a href="shop-detail.html">اسپیکرها بلوتوث قدرتمند</a>
+                      </h6>
+                      <span class="price">
+															<del>47.00 تومان تومان</del>
+															<ins>27.00 تومان</ins>
+														</span>
+                      <div class="star-rating">
+                        <span style="width:100%"></span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="widget widget_tag_cloud">
+              <h3 class="widget-title">برچسب های محبوب</h3>
+              <div class="tagcloud">
+                <a href="#">تبلیغات</a>
+                <a href="#">کلاسیک</a>
+                <a href="#">اسلایدر عرض کامل</a>
+                <a href="#">گالری</a>
+                <a href="#">لینک</a>
+                <a href="#">مجله</a>
+                <a href="#">موزیک</a>
+                <a href="#">نقل قول</a>
+                <a href="#">تکنو</a>
+                <a href="#">ویدئو</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="archive-shop-actions">
+            <div class="row">
+              <div class="shop-filter-left col-lg-6">
+                <p class="commerce-result-count">نمایش 1-8 از 20 نتیجه</p>
+              </div>
+              <div class="shop-filter-right col-lg-6">
+                <form class="commerce-ordering">
+                  <select name="orderby" class="orderby">
+                    <option value="popularity">مرتب سازی بر اساس محبوبیت</option>
+                    <option value="rating">مرتب سازی بر اساس امتیاز متوسط</option>
+                    <option value="date" selected="selected">مرتب سازی بر اساس آخرین</option>
+                    <option value="price">مرتب سازی بر اساس قیمت: کم به زیاد</option>
+                    <option value="price-desc">مرتب سازی بر اساس قیمت: زیاد به کم</option>
+                  </select>
+                </form>
+                <div class="shop-view-switcher">
+                  <div class="switcher-item grid active">
+                    <i class="ion-android-apps"></i>
+                  </div>
+                  <div class="switcher-item list">
+                    <i class="ion-android-menu"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tm-grid-wrapper" data-type="masonry" data-lg-columns="2" data-md-columns="2" data-sm-columns="1" data-gutter="30">
+            <div class="row tm-grid has-animation">
+              <div class="grid-sizer"></div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_9.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_9_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">47.00 تومان</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_10.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_10_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">49.00 تومان</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-badges">
+                    <span class="onsale">-11%</span>
+                  </div>
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_11.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_11_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">
+                      <del>49.00 تومان</del>
+                      <ins>39.00 تومان</ins>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-badges">
+                    <span class="hot">داغ</span>
+                    <span class="onsale">Sale</span>
+                  </div>
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_12.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_12_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">39.00 تومان – 49.00 تومان</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_13.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_13_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">49.00 تومان</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-badges">
+                    <span class="hot">داغ</span>
+                  </div>
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_14.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_14_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">49.00 تومان</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-badges">
+                    <span class="onsale">-33%</span>
+                  </div>
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_15.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">
+                      <del>49.00 تومان</del>
+                      <ins>29.00 تومان</ins>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 product-item style-2 grid-item">
+                <div class="product-wrapper">
+                  <div class="product-thumbnail">
+                    <div class="thumbnail">
+                      <a href="shop-detail.html">
+                        <div class="product-main-image">
+                          <img src="/assets/images/shop/shop_16.jpg" alt="" />
+                        </div>
+                        <div class="product-hover-image">
+                          <img src="/assets/images/shop/shop_16_2.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="product-actions">
+                    <div class="product-action quickview-btn hint--left hint--bounce" aria-label="مشاهده سریع">
+                      <a class="quickview-icon" href="ajax/product-quickview.html"></a>
+                    </div>
+                    <div class="product-action add-cart-btn hint--left hint--bounce" aria-label="افزودن به سبد خرید">
+                      <a href="#" class="add-to-cart">افزودن به سبد خرید</a>
+                    </div>
+                    <div class="product-action hint--bounce hint--left add-to-wishlist" aria-label="افزودن به لیست دلخواه">
+                      <a href="#">افزودن به لیست دلخواه</a>
+                    </div>
+                    <div class="product-action compare-btn hint--bounce hint--left" aria-label="مقایسه">
+                      <a href="#" class="compare"></a>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <h2 class="product-title"><a href="shop-detail.html">حذف نویز بی سیم هدفون ها</a></h2>
+                    <div class="price">49.00 تومان</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pagination text-center">
+            <ul class="page-pagination">
+              <li><span class="page-numbers current">1</span></li>
+              <li><a class="page-numbers" href="#">2</a></li>
+              <li><a class="next page-numbers" href="#">بعدی</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
