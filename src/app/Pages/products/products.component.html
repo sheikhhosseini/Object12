@@ -163,7 +163,7 @@
             </div>
           </div>
           <div class="tm-grid-wrapper" data-type="masonry" data-lg-columns="3" data-md-columns="3" data-sm-columns="1" data-gutter="10">
-            <div class="row tm-grid has-animation" *ngIf="filterProducts">
+            <div class="row tm-grid has-animation" *ngIf="filterProducts.products.length">
               <div class="grid-sizer"></div>
               <!-- products items -->
                 <app-single-product class="col-sm-4" *ngFor="let item of filterProducts.products" [product]="item"></app-single-product>
@@ -172,8 +172,11 @@
           </div>
           <div class="pagination text-center">
             <ul class="page-pagination">
-              <li><span class="page-numbers current">1</span></li>
-              <li><a class="page-numbers" href="#">2</a></li>
+              <li><a class="next page-numbers" href="#">قبلی</a></li>
+
+              <li  (click)="SetPage(page)"
+                *ngFor="let page of pages" [ngClass]="{'active':page === filterProducts.activePage}" class="page-item "><a class="MyCursor-pointer page-link px-3" >{{page}}</a></li>
+
               <li><a class="next page-numbers" href="#">بعدی</a></li>
             </ul>
           </div>
