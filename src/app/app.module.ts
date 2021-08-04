@@ -24,6 +24,8 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { CookieService } from "ngx-cookie-service";
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import { ProductsComponent } from './Pages/products/products.component';
+import {ProductsService} from "./services/products.service";
+import { SingleProductComponent } from './Shared/single-product/single-product.component';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { ProductsComponent } from './Pages/products/products.component';
     RegisterComponent,
     LoginComponent,
     ActivateAccountComponent,
-    ProductsComponent
+    ProductsComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { ProductsComponent } from './Pages/products/products.component';
   ],
   providers: [
     SliderService,
+    ProductsService,
     AccountService,
     {
       provide:HTTP_INTERCEPTORS,

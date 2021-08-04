@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductsService} from "../../services/products.service";
+import {FilterProductsDto} from "../../DTOs/Products/FilterProductsDto";
 
 @Component({
   selector: 'app-products',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  filterProducts : FilterProductsDto | null = null;
+
+  constructor(private _productsService : ProductsService) { }
 
   ngOnInit(): void {
+
+    this._productsService.GetFilteredProducts().subscribe(res=>
+    {
+      console.log(res);
+      this.filterProducts = res.data;
+    });
   }
 
 }
