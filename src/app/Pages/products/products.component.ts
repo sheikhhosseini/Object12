@@ -3,6 +3,8 @@ import {ProductsService} from "../../services/products.service";
 import {FilterProductsDto} from "../../DTOs/Products/FilterProductsDto";
 import {ActivatedRoute, Router} from "@angular/router";
 
+declare function MyPriceSlider() : any;
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -28,6 +30,8 @@ export class ProductsComponent implements OnInit {
       this.filterProducts.pageId = pageId;
       this.GetProducts();
     });
+
+    MyPriceSlider();
   }
 
 
