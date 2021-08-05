@@ -15,7 +15,7 @@ export class FilterProductsDto{
   public takeEntity: number,
   public skipEntity: number,
   public activePage: number,
-  public orderBy : ProductOrderBy = ProductOrderBy.Default,
+  public orderBy : any = null,
   public categories : number[],
   public products: ProductDto[]
   ) {

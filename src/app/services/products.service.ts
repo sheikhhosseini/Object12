@@ -31,8 +31,8 @@ export class ProductsService {
       for (const cat of filter.categories){
         myParams = myParams.append('categories' , cat.toString());
       }
-
-      if (filter.orderBy !== null && filter.orderBy !== undefined && filter.orderBy !== ProductOrderBy.Default)
+      //console.log(filter.orderBy)
+      if (filter.orderBy !== null && filter.orderBy !== undefined && filter.orderBy)
       {
         myParams = myParams = myParams.append('orderBy' , filter.orderBy.toString());
       }

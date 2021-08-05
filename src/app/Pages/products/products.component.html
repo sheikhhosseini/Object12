@@ -153,29 +153,17 @@
         <div class="col-lg-9">
           <div class="archive-shop-actions">
             <div class="row">
-              <div class="shop-filter-left col-lg-6">
-                <p class="commerce-result-count">نمایش 1-8 از 20 نتیجه</p>
-              </div>
+<!--              [(ngModel)]="filterProducts.orderBy"-->
               <div class="shop-filter-right col-lg-6">
-                <form class="commerce-ordering">
-                  <select [(ngModel)]="filterProducts.orderBy" name="test" (change)="ChangeOrder($event)">
+                  <select name="test" (change)="ChangeOrder($event)">
                     <option value="Default" selected="selected">مرتب سازی بر اساس :</option>
-                    <option value="0">مرتب سازی بر اساس قیمت: کم به زیاد</option>
-                    <option value="1">مرتب سازی بر اساس قیمت: زیاد به کم</option>
+                    <option  value="0">مرتب سازی بر اساس قیمت: کم به زیاد</option>
+                    <option  value="1">مرتب سازی بر اساس قیمت: زیاد به کم</option>
                   </select>
-                </form>
-                <div class="shop-view-switcher">
-                  <div class="switcher-item grid active">
-                    <i class="ion-android-apps"></i>
-                  </div>
-                  <div class="switcher-item list">
-                    <i class="ion-android-menu"></i>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-          <div class="tm-grid-wrapper" data-type="masonry" data-lg-columns="3" data-md-columns="3" data-sm-columns="1" data-gutter="10">
+          <div class="tm-grid-wrapper"  data-lg-columns="3" data-md-columns="3" data-sm-columns="1" data-gutter="10">
             <div class="row tm-grid has-animation" *ngIf="filterProducts.products.length">
               <div class="grid-sizer"></div>
               <!-- products items -->

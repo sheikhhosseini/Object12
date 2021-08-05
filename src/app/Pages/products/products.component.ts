@@ -16,10 +16,11 @@ export class ProductsComponent implements OnInit {
 
 
   filterProducts : FilterProductsDto = new FilterProductsDto('',0,0,1,0,0,0,5,
-    0,1,ProductOrderBy.Default, [],[]);
+    0,1,null, [],[]);
   pages : number[] = [];
   Categories :ProductCategoryDto[] = [];
   //SelectedCategories : number[] = [];
+  CurrentSort : any = null;
 
   constructor(private _productsService : ProductsService
               , private _activatedRoute : ActivatedRoute
@@ -33,8 +34,14 @@ export class ProductsComponent implements OnInit {
       }
 
       this.filterProducts.categories = params.categories ? params.categories : [];
-      this.filterProducts.orderBy = params.orderBy ? params.orderBy : ProductOrderBy.Default;
-      //console.log(pageId);
+      if (this.filterProducts.orderBy === null || this.filterProducts.orderBy === undefined){
+        this.filterProducts.orderBy = params.orderBy;
+      }
+      else {
+        this.filterProducts.orderBy = this.CurrentSort;
+      }
+      this.filterProducts.orderBy = params.orderBy;
+      //console.log(this.filterProducts.orderBy);
       this.filterProducts.pageId = pageId;
       this.GetProducts();
     });
@@ -70,12 +77,27 @@ export class ProductsComponent implements OnInit {
   }
 
   SetCategoriesFilter() {
-    this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories}})
+    let sort : any;
+    if (this.CurrentSort == 0) {
+      sort = 'PriceAsc';
+    }
+    else if (this.CurrentSort == 1){
+      sort = 'PriceDec';
+    }
+    this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy :sort}})
   }
 
   SetPage(page:number) {
-    console.log(this.filterProducts.orderBy)
-    this._router.navigate(['products'] , {queryParams : {pageId : page , categories : this.filterProducts.categories}})
+    //console.log(this.CurrentSort)
+
+    let sort : any;
+    if (this.CurrentSort == 0) {
+      sort = 'PriceAsc';
+    }
+    else if (this.CurrentSort == 1){
+      sort = 'PriceDec';
+    }
+    this._router.navigate(['products'] , {queryParams : {pageId : page , categories : this.filterProducts.categories , orderBy :sort}})
   }
 
   GetProducts() {
@@ -94,7 +116,8 @@ export class ProductsComponent implements OnInit {
 
   ChangeOrder(event : any){
 
-
+    this.filterProducts.orderBy = event.target.value;
+    this.CurrentSort = this.filterProducts.orderBy;
     switch (this.filterProducts.orderBy) {
       // @ts-ignore
       case ProductOrderBy.PriceAsc.toString():
@@ -105,9 +128,7 @@ export class ProductsComponent implements OnInit {
       case ProductOrderBy.PriceDec.toString():
         this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy : 'PriceDec' , pageId : this.filterProducts.pageId}})
         break;
-
     }
-    this.GetProducts();
   }
 
 }
