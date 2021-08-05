@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {FilterProductsDto} from "../DTOs/Products/FilterProductsDto";
 import {IResponseResult} from "../DTOs/Common/IResponseResult";
 import {ProductCategoryDto} from "../DTOs/Products/ProductCategoryDto";
-
+import {ProductOrderBy} from "../DTOs/Products/ProductOrderBy";
 
 
 @Injectable({
@@ -30,6 +30,11 @@ export class ProductsService {
 
       for (const cat of filter.categories){
         myParams = myParams.append('categories' , cat.toString());
+      }
+
+      if (filter.orderBy !== null && filter.orderBy !== undefined && filter.orderBy !== ProductOrderBy.Default)
+      {
+        myParams = myParams = myParams.append('orderBy' , filter.orderBy.toString());
       }
       //console.log(myParams)
     }

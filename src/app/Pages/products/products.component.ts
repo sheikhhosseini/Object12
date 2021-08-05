@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {FilterProductsDto} from "../../DTOs/Products/FilterProductsDto";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductCategoryDto} from "../../DTOs/Products/ProductCategoryDto";
+import {ProductOrderBy} from "../../DTOs/Products/ProductOrderBy";
 
 declare function MyPriceSlider() : any;
 
@@ -13,11 +14,12 @@ declare function MyPriceSlider() : any;
 })
 export class ProductsComponent implements OnInit {
 
+
   filterProducts : FilterProductsDto = new FilterProductsDto('',0,0,1,0,0,0,5,
-    0,1,[],[]);
+    0,1,ProductOrderBy.Default, [],[]);
   pages : number[] = [];
   Categories :ProductCategoryDto[] = [];
-  SelectedCategories : number[] = [];
+  //SelectedCategories : number[] = [];
 
   constructor(private _productsService : ProductsService
               , private _activatedRoute : ActivatedRoute
@@ -31,6 +33,7 @@ export class ProductsComponent implements OnInit {
       }
 
       this.filterProducts.categories = params.categories ? params.categories : [];
+      this.filterProducts.orderBy = params.orderBy ? params.orderBy : ProductOrderBy.Default;
       //console.log(pageId);
       this.filterProducts.pageId = pageId;
       this.GetProducts();
@@ -40,7 +43,7 @@ export class ProductsComponent implements OnInit {
     this._productsService.GetProductsActiveCategories().subscribe(res=>{
       if (res.status === "Success"){
         this.Categories = res.data;
-        console.log(this.Categories)
+        //console.log(this.Categories)
       }
     });
 
@@ -71,6 +74,7 @@ export class ProductsComponent implements OnInit {
   }
 
   SetPage(page:number) {
+    console.log(this.filterProducts.orderBy)
     this._router.navigate(['products'] , {queryParams : {pageId : page , categories : this.filterProducts.categories}})
   }
 
@@ -85,6 +89,25 @@ export class ProductsComponent implements OnInit {
         this.pages.push(i);
       }
     });
+  }
+
+
+  ChangeOrder(event : any){
+
+
+    switch (this.filterProducts.orderBy) {
+      // @ts-ignore
+      case ProductOrderBy.PriceAsc.toString():
+        this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy : 'PriceAsc' , pageId : this.filterProducts.pageId
+        }})
+        break;
+      // @ts-ignore
+      case ProductOrderBy.PriceDec.toString():
+        this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy : 'PriceDec' , pageId : this.filterProducts.pageId}})
+        break;
+
+    }
+    this.GetProducts();
   }
 
 }

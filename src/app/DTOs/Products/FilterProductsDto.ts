@@ -1,6 +1,9 @@
 import {ProductDto} from "./ProductDto";
+import {ProductOrderBy} from "./ProductOrderBy";
 
 export class FilterProductsDto{
+
+
   constructor(
   public title: string = '',
   public startPrice: number,
@@ -12,6 +15,7 @@ export class FilterProductsDto{
   public takeEntity: number,
   public skipEntity: number,
   public activePage: number,
+  public orderBy : ProductOrderBy = ProductOrderBy.Default,
   public categories : number[],
   public products: ProductDto[]
   ) {

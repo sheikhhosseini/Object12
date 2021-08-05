@@ -158,12 +158,10 @@
               </div>
               <div class="shop-filter-right col-lg-6">
                 <form class="commerce-ordering">
-                  <select name="orderby" class="orderby">
-                    <option value="popularity">مرتب سازی بر اساس محبوبیت</option>
-                    <option value="rating">مرتب سازی بر اساس امتیاز متوسط</option>
-                    <option value="date" selected="selected">مرتب سازی بر اساس آخرین</option>
-                    <option value="price">مرتب سازی بر اساس قیمت: کم به زیاد</option>
-                    <option value="price-desc">مرتب سازی بر اساس قیمت: زیاد به کم</option>
+                  <select [(ngModel)]="filterProducts.orderBy" name="test" (change)="ChangeOrder($event)">
+                    <option value="Default" selected="selected">مرتب سازی بر اساس :</option>
+                    <option value="0">مرتب سازی بر اساس قیمت: کم به زیاد</option>
+                    <option value="1">مرتب سازی بر اساس قیمت: زیاد به کم</option>
                   </select>
                 </form>
                 <div class="shop-view-switcher">
