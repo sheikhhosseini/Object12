@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {FilterProductsDto} from "../../DTOs/Products/FilterProductsDto";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ProductCategoryDto} from "../../DTOs/Products/ProductCategoryDto";
 
 declare function MyPriceSlider() : any;
 
@@ -15,6 +16,8 @@ export class ProductsComponent implements OnInit {
   filterProducts : FilterProductsDto = new FilterProductsDto('',0,0,1,0,0,0,5,
     0,1,[]);
   pages : number[] = [];
+  Categories :ProductCategoryDto[] = [];
+  SelectedCategories : number[] = [];
 
   constructor(private _productsService : ProductsService
               , private _activatedRoute : ActivatedRoute
@@ -31,7 +34,31 @@ export class ProductsComponent implements OnInit {
       this.GetProducts();
     });
 
+
+    this._productsService.GetProductsActiveCategories().subscribe(res=>{
+      if (res.status === "Success"){
+        this.Categories = res.data;
+        console.log(this.Categories)
+      }
+    });
+
     MyPriceSlider();
+
+  }
+
+  FilterChangeCategory(event : any)
+  {
+
+    let val = event.target.value;
+    if (event.target.checked){
+      this.SelectedCategories.push(parseInt(val));
+      console.log(this.SelectedCategories);
+    }
+    else if (!event.target.checked){
+      //console.log(this.SelectedCategories.indexOf(parseInt(val)))
+      this.SelectedCategories.splice(this.SelectedCategories.indexOf(parseInt(val)),1);
+      console.log(this.SelectedCategories);
+    }
   }
 
 

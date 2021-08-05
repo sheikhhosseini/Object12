@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {FilterProductsDto} from "../DTOs/Products/FilterProductsDto";
 import {IResponseResult} from "../DTOs/Common/IResponseResult";
+import {ProductCategoryDto} from "../DTOs/Products/ProductCategoryDto";
 
 
 
@@ -28,5 +29,12 @@ export class ProductsService {
         .set('takeEntity' , filter.takeEntity)
     }
     return this._http.get<IResponseResult<FilterProductsDto>>('/products/getproducts' , {params : myParams});
+  }
+
+
+
+  GetProductsActiveCategories() : Observable<IResponseResult<ProductCategoryDto[]>>
+  {
+    return this._http.get<IResponseResult<ProductCategoryDto[]>>('/products/products-categories');
   }
 }

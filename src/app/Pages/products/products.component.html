@@ -8,7 +8,7 @@
               <form class="search-form" action="#">
                 <input type="search" class="search-field" placeholder="جستجوی کلید واژه..." value="" name="s" title="جستجو برای:" />
                 <button type="submit" class="search-submit">
-                  <span class="search-btn-icon fa fa-search"></span>
+<!--                  <span class="search-btn-icon fa fa-search"></span>-->
                   <span class="search-btn-text">جستجو</span>
                 </button>
               </form>
@@ -23,6 +23,15 @@
                 <li class="cat-item"><a href="#">اسپیکرها <span class="count">2</span></a></li>
               </ul>
             </div>
+            <hr>
+            <div class="widget widget_categories">
+              <fieldset *ngIf="Categories.length > 0">
+                <label *ngFor="let cat of Categories" [for]="'cat_' + cat.id" class="row">
+                  <input (change)="FilterChangeCategory($event)" type="checkbox" [value]="cat.id" class="form-checkbox ml-3" [id]="'cat_' + cat.id">{{cat.title}}
+                </label>
+              </fieldset>
+            </div>
+
             <div class="widget widget_price_filter">
               <h3 class="widget-title">فیلتر توسط قیمت</h3>
               <div class="price_slider_wrapper">
@@ -135,6 +144,9 @@
             </div>
           </div>
         </div>
+
+
+
         <div class="col-lg-9">
           <div class="archive-shop-actions">
             <div class="row">
@@ -167,9 +179,10 @@
               <div class="grid-sizer"></div>
               <!-- products items -->
                 <app-single-product class="col-sm-4" *ngFor="let item of filterProducts.products" [product]="item"></app-single-product>
-
             </div>
           </div>
+
+
           <div class="pagination text-center">
             <ul class="page-pagination">
               <li><a class="next page-numbers" href="#">قبلی</a></li>
