@@ -14,7 +14,7 @@ declare function MyPriceSlider() : any;
 export class ProductsComponent implements OnInit {
 
   filterProducts : FilterProductsDto = new FilterProductsDto('',0,0,1,0,0,0,5,
-    0,1,[]);
+    0,1,[],[]);
   pages : number[] = [];
   Categories :ProductCategoryDto[] = [];
   SelectedCategories : number[] = [];
@@ -29,6 +29,8 @@ export class ProductsComponent implements OnInit {
       if (params.pageId !== undefined){
         pageId = parseInt(params.pageId , 0);
       }
+
+      this.filterProducts.categories = params.categories ? params.categories : [];
       //console.log(pageId);
       this.filterProducts.pageId = pageId;
       this.GetProducts();
@@ -48,28 +50,37 @@ export class ProductsComponent implements OnInit {
 
   FilterChangeCategory(event : any)
   {
+    if (this.filterProducts.categories === undefined || this.filterProducts.categories === null){
+      this.filterProducts.categories = [];
+    }
 
-    let val = event.target.value;
+    const val = event.target.value;
     if (event.target.checked){
-      this.SelectedCategories.push(parseInt(val));
-      console.log(this.SelectedCategories);
+      this.filterProducts.categories.push(parseInt(val));
+      this.SetCategoriesFilter();
     }
     else if (!event.target.checked){
-      //console.log(this.SelectedCategories.indexOf(parseInt(val)))
-      this.SelectedCategories.splice(this.SelectedCategories.indexOf(parseInt(val)),1);
-      console.log(this.SelectedCategories);
+      this.filterProducts.categories = this.filterProducts.categories.filter(c=> c !== parseInt(val));
+      //this.filterProducts.categories.splice(this.filterProducts.categories.indexOf(parseInt(val)),1);
+      this.SetCategoriesFilter();
     }
   }
 
+  SetCategoriesFilter() {
+    this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories}})
+  }
 
   SetPage(page:number) {
-    this._router.navigate(['products'] , {queryParams : {pageId : page}})
+    this._router.navigate(['products'] , {queryParams : {pageId : page , categories : this.filterProducts.categories}})
   }
 
   GetProducts() {
     this._productsService.GetFilteredProducts(this.filterProducts).subscribe(res=> {
       this.filterProducts = res.data;
       this.pages = [];
+      if (res.data.categories === null){
+        this.filterProducts.categories = [];
+      }
       for (let i = this.filterProducts.startPage; i<= this.filterProducts.endPage; i++){
         this.pages.push(i);
       }

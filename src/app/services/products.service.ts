@@ -27,6 +27,11 @@ export class ProductsService {
         .set('startPrice' , filter.startPrice)
         .set('endPrice' , filter.endPrice)
         .set('takeEntity' , filter.takeEntity)
+
+      for (const cat of filter.categories){
+        myParams = myParams.append('categories' , cat.toString());
+      }
+      //console.log(myParams)
     }
     return this._http.get<IResponseResult<FilterProductsDto>>('/products/getproducts' , {params : myParams});
   }

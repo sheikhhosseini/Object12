@@ -12,6 +12,7 @@ export class FilterProductsDto{
   public takeEntity: number,
   public skipEntity: number,
   public activePage: number,
+  public categories : number[],
   public products: ProductDto[]
   ) {
   }
