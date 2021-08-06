@@ -35,21 +35,43 @@
               </fieldset>
             </div>
 
+            <hr>
             <div class="widget widget_price_filter">
               <h3 class="widget-title">فیلتر توسط قیمت</h3>
-              <div class="price_slider_wrapper">
-                <div class="price_slider" style="display:none;"></div>
-                <div class="price_slider_amount">
-                  <input type="text" id="min_price" name="min_price" value="" data-min="0" placeholder="حداقل قیمت"/>
-                  <input type="text" id="max_price" name="max_price" value="" data-max="150" placeholder="حداکثر قیمت"/>
-                  <button type="submit" class="button style-flat button-xs button-secondary">فیلتر</button>
-                  <div class="price_label" style="display:none;">
-                    قیمت: <span class="from"></span> &mdash; <span class="to"></span>
-                  </div>
-                  <div class="clear"></div>
-                </div>
+              <div>
+                <mat-slider style="width: 100%"
+                            thumbLabel
+                            [displayWith]="formatLabel"
+                            tickInterval="1000"
+                            value="2"
+                            (change)="SetMinPrice($event)"
+                            step="100"
+                            min="0"
+                            max="10000"
+                            aria-label="units"></mat-slider>
+                <h3 class="widget-title"> کمترین قیمت : {{filterProducts.startPrice}} تومان </h3>
+              </div>
+
+              <div>
+                <mat-slider style="width: 100%"
+                            thumbLabel
+                            [displayWith]="formatLabel"
+                            tickInterval="1000"
+                            value="2"
+                            (change)="SetMaxPrice($event)"
+                            step="100"
+                            [min]="filterProducts.startPrice"
+                            max="10000"
+                            aria-label="units"></mat-slider>
+                <h3 class="widget-title"> بیشترین قیمت : {{filterProducts.endPrice}} تومان </h3>
+              </div>
+              <div class="row text-center">
+                <button class="btn btn-primary" (click)="SetPrice()">ثبت فیلتر قیمت</button>
               </div>
             </div>
+            <hr>
+
+
             <div class="widget widget_top_rated_products">
               <h3 class="widget-title">محصولات با بالاترین امتیاز</h3>
               <ul class="product_list_widget">
@@ -174,12 +196,12 @@
 
           <div class="pagination text-center">
             <ul class="page-pagination">
-              <li><a class="next page-numbers" href="#">قبلی</a></li>
+              <li ><a class="next page-numbers MyCursor-pointer" (click)="SetPage(filterProducts.activePage - 1)" >قبلی</a></li>
 
               <li  (click)="SetPage(page)"
                 *ngFor="let page of pages" [ngClass]="{'active':page === filterProducts.activePage}" class="page-item "><a class="MyCursor-pointer page-link px-3" >{{page}}</a></li>
 
-              <li><a class="next page-numbers" href="#">بعدی</a></li>
+              <li><a  class="next page-numbers MyCursor-pointer" (click)="SetPage(filterProducts.activePage + 1)" >بعدی</a></li>
             </ul>
           </div>
         </div>

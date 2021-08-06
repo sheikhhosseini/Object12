@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductCategoryDto} from "../../DTOs/Products/ProductCategoryDto";
 import {ProductOrderBy} from "../../DTOs/Products/ProductOrderBy";
 
-declare function MyPriceSlider() : any;
+//declare function MyPriceSlider() : any;
 
 @Component({
   selector: 'app-products',
@@ -15,118 +15,165 @@ declare function MyPriceSlider() : any;
 export class ProductsComponent implements OnInit {
 
 
-  filterProducts : FilterProductsDto = new FilterProductsDto('',0,0,1,0,0,0,5,
-    0,1,null, [],[]);
-  pages : number[] = [];
-  Categories :ProductCategoryDto[] = [];
+  filterProducts: FilterProductsDto = new FilterProductsDto('', 0, 0, 1, 0, 0, 0, 5,
+    0, 1, null, [], []);
+  pages: number[] = [];
+  Categories: ProductCategoryDto[] = [];
   //SelectedCategories : number[] = [];
-  CurrentSort : any = null;
+  CurrentSort: any = null;
 
-  constructor(private _productsService : ProductsService
-              , private _activatedRoute : ActivatedRoute
-              , private _router : Router) { }
+  constructor(private _productsService: ProductsService
+    , private _activatedRoute: ActivatedRoute
+    , private _router: Router) {
+  }
 
   ngOnInit(): void {
     this._activatedRoute.queryParams.subscribe(params => {
       let pageId = 1;
-      if (params.pageId !== undefined){
-        pageId = parseInt(params.pageId , 0);
+      if (params.pageId !== undefined) {
+        pageId = parseInt(params.pageId, 0);
       }
 
       this.filterProducts.categories = params.categories ? params.categories : [];
-      if (this.filterProducts.orderBy === null || this.filterProducts.orderBy === undefined){
+      if (this.filterProducts.orderBy === null || this.filterProducts.orderBy === undefined) {
         this.filterProducts.orderBy = params.orderBy;
-      }
-      else {
+      } else {
         this.filterProducts.orderBy = this.CurrentSort;
       }
       this.filterProducts.orderBy = params.orderBy;
       //console.log(this.filterProducts.orderBy);
       this.filterProducts.pageId = pageId;
+      this.filterProducts.startPrice = params.startPrice ? params.startPrice : 0;
+      this.filterProducts.endPrice = params.endPrice ? params.endPrice : 0;
       this.GetProducts();
     });
 
 
-    this._productsService.GetProductsActiveCategories().subscribe(res=>{
-      if (res.status === "Success"){
+    this._productsService.GetProductsActiveCategories().subscribe(res => {
+      if (res.status === "Success") {
         this.Categories = res.data;
         //console.log(this.Categories)
       }
     });
 
-    MyPriceSlider();
+    //MyPriceSlider();
 
   }
 
-  FilterChangeCategory(event : any)
-  {
-    if (this.filterProducts.categories === undefined || this.filterProducts.categories === null){
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value) + 'تومان';
+    }
+
+    return value;
+  }
+
+  SetMinPrice(event: any) {
+    //console.log(event)
+    this.filterProducts.startPrice = parseInt(event.value);
+  }
+
+  SetMaxPrice(event: any) {
+    //console.log(event)
+    this.filterProducts.endPrice = parseInt(event.value);
+  }
+
+
+  SetPrice() {
+    //console.log(this.filterProducts.startPrice, this.filterProducts.endPrice)
+    let sort: any;
+    if (this.CurrentSort == 0) {
+      sort = 'PriceAsc';
+    } else if (this.CurrentSort == 1) {
+      sort = 'PriceDec';
+    }
+    this._router.navigate(['products'], {queryParams: {categories: this.filterProducts.categories, orderBy: sort ,
+        startPrice: this.filterProducts.startPrice ,endPrice: this.filterProducts.endPrice }})
+  }
+
+
+  FilterChangeCategory(event: any) {
+    if (this.filterProducts.categories === undefined || this.filterProducts.categories === null) {
       this.filterProducts.categories = [];
     }
 
     const val = event.target.value;
-    if (event.target.checked){
+    if (event.target.checked) {
       this.filterProducts.categories.push(parseInt(val));
       this.SetCategoriesFilter();
-    }
-    else if (!event.target.checked){
-      this.filterProducts.categories = this.filterProducts.categories.filter(c=> c !== parseInt(val));
+    } else if (!event.target.checked) {
+      this.filterProducts.categories = this.filterProducts.categories.filter(c => c !== parseInt(val));
       //this.filterProducts.categories.splice(this.filterProducts.categories.indexOf(parseInt(val)),1);
       this.SetCategoriesFilter();
     }
   }
 
   SetCategoriesFilter() {
-    let sort : any;
+    let sort: any;
     if (this.CurrentSort == 0) {
       sort = 'PriceAsc';
-    }
-    else if (this.CurrentSort == 1){
+    } else if (this.CurrentSort == 1) {
       sort = 'PriceDec';
     }
-    this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy :sort}})
+    this._router.navigate(['products'], {queryParams: {categories: this.filterProducts.categories, orderBy: sort,
+        startPrice: this.filterProducts.startPrice ,endPrice: this.filterProducts.endPrice}})
   }
 
-  SetPage(page:number) {
-    //console.log(this.CurrentSort)
-
-    let sort : any;
+  SetPage(page: number) {
+    let sort: any;
     if (this.CurrentSort == 0) {
       sort = 'PriceAsc';
-    }
-    else if (this.CurrentSort == 1){
+    } else if (this.CurrentSort == 1) {
       sort = 'PriceDec';
     }
-    this._router.navigate(['products'] , {queryParams : {pageId : page , categories : this.filterProducts.categories , orderBy :sort}})
+    this._router.navigate(['products'], {
+      queryParams: {
+        pageId: page,
+        categories: this.filterProducts.categories,
+        orderBy: sort,
+        startPrice: this.filterProducts.startPrice ,endPrice: this.filterProducts.endPrice
+      }
+    })
   }
 
   GetProducts() {
-    this._productsService.GetFilteredProducts(this.filterProducts).subscribe(res=> {
+    this._productsService.GetFilteredProducts(this.filterProducts).subscribe(res => {
       this.filterProducts = res.data;
       this.pages = [];
-      if (res.data.categories === null){
+      if (res.data.categories === null) {
         this.filterProducts.categories = [];
       }
-      for (let i = this.filterProducts.startPage; i<= this.filterProducts.endPage; i++){
+      for (let i = this.filterProducts.startPage; i <= this.filterProducts.endPage; i++) {
         this.pages.push(i);
       }
     });
   }
 
 
-  ChangeOrder(event : any){
+  ChangeOrder(event: any) {
 
     this.filterProducts.orderBy = event.target.value;
     this.CurrentSort = this.filterProducts.orderBy;
     switch (this.filterProducts.orderBy) {
       // @ts-ignore
       case ProductOrderBy.PriceAsc.toString():
-        this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy : 'PriceAsc' , pageId : this.filterProducts.pageId
-        }})
+        this._router.navigate(['products'], {
+          queryParams: {
+            categories: this.filterProducts.categories, orderBy: 'PriceAsc', pageId: this.filterProducts.pageId,
+            startPrice: this.filterProducts.startPrice ,endPrice: this.filterProducts.endPrice
+          }
+        })
         break;
       // @ts-ignore
       case ProductOrderBy.PriceDec.toString():
-        this._router.navigate(['products'],{queryParams : {categories : this.filterProducts.categories , orderBy : 'PriceDec' , pageId : this.filterProducts.pageId}})
+        this._router.navigate(['products'], {
+          queryParams: {
+            categories: this.filterProducts.categories,
+            orderBy: 'PriceDec',
+            pageId: this.filterProducts.pageId ,
+            startPrice: this.filterProducts.startPrice ,endPrice: this.filterProducts.endPrice
+          }
+        })
         break;
     }
   }

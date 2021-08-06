@@ -31,12 +31,12 @@ export class ProductsService {
       for (const cat of filter.categories){
         myParams = myParams.append('categories' , cat.toString());
       }
-      //console.log(filter.orderBy)
+
       if (filter.orderBy !== null && filter.orderBy !== undefined && filter.orderBy)
       {
         myParams = myParams = myParams.append('orderBy' , filter.orderBy.toString());
       }
-      //console.log(myParams)
+
     }
     return this._http.get<IResponseResult<FilterProductsDto>>('/products/getproducts' , {params : myParams});
   }

@@ -26,6 +26,8 @@ import { ActivateAccountComponent } from './pages/activate-account/activate-acco
 import { ProductsComponent } from './Pages/products/products.component';
 import {ProductsService} from "./services/products.service";
 import { SingleProductComponent } from './Shared/single-product/single-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { SingleProductComponent } from './Shared/single-product/single-product.c
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [
     SliderService,
