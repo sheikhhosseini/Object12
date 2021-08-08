@@ -5,7 +5,7 @@
     </div>
     <div class="product-thumbnail">
       <div class="thumbnail">
-        <a href="shop-detail.html">
+        <a [routerLink]="'/products/' + product.id">
           <div class="product-main-image">
             <img [src]="ProductImage + product.image" alt="" />
           </div>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="product-info">
-      <h2 class="product-title"><a href="shop-detail.html">{{product.productName}}</a></h2>
+      <h2 class="product-title"><a [routerLink]="'/products/' + product.id">{{product.productName}}</a></h2>
       <div class="price">
         <del>49.00 تومان</del>
         <ins>{{product.price}} تومان</ins>

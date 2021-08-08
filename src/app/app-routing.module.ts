@@ -7,6 +7,7 @@ import {LoginComponent} from "./Pages/login/login.component";
 import {RegisterComponent} from "./Pages/register/register.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 import {ProductsComponent} from "./Pages/products/products.component";
+import {ProductDetailsComponent} from "./Pages/product-details/product-details.component";
 
 const routes: Routes =
   [
@@ -16,7 +17,8 @@ const routes: Routes =
     {path : 'login' , component : LoginComponent},
     {path : 'register' , component : RegisterComponent},
     {path : 'products' , component : ProductsComponent},
-    {path : 'activate-account/:activeCode' , component : ActivateAccountComponent}
+    {path : 'activate-account/:activeCode' , component : ActivateAccountComponent},
+    {path : 'products/:productId' , component : ProductDetailsComponent},
     // {path : '**' , component : NotfoundComponent}
   ];
 

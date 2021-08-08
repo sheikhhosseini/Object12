@@ -5,6 +5,7 @@ import {FilterProductsDto} from "../DTOs/Products/FilterProductsDto";
 import {IResponseResult} from "../DTOs/Common/IResponseResult";
 import {ProductCategoryDto} from "../DTOs/Products/ProductCategoryDto";
 import {ProductOrderBy} from "../DTOs/Products/ProductOrderBy";
+import {ProductDto} from "../DTOs/Products/ProductDto";
 
 
 @Injectable({
@@ -47,4 +48,11 @@ export class ProductsService {
   {
     return this._http.get<IResponseResult<ProductCategoryDto[]>>('/products/products-categories');
   }
+
+
+  GetProductDetail(productId : number) : Observable<IResponseResult<ProductDto>>{
+    return this._http.get<IResponseResult<ProductDto>>('/products/products-detail/' + productId);
+  }
+
+
 }

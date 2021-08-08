@@ -1,0 +1,228 @@
+<div id="main">
+  <div class="section pt-10 pb-10">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="shop-detail-images">
+            <div class="product-badges">
+              <span class="hot">داغ</span>
+              <span class="onsale">فروشی</span>
+            </div>
+            <div class="shop-detail-image-carousel dots-carousel" data-auto-play="true" data-desktop="1" data-laptop="1" data-tablet="1" data-mobile="1">
+              <div class="text-center">
+                <img src="/assets/images/shop/shop_12.jpg" alt="" />
+              </div>
+              <div class="text-center">
+                <img src="/assets/images/shop/shop_12_2.jpg" alt="" />
+              </div>
+              <div class="text-center">
+                <img src="/assets/images/shop/shop_12_3.jpg" alt="" />
+              </div>
+              <div class="text-center">
+                <img src="/assets/images/shop/shop_12_4.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="shop-summary">
+            <h2 class="product-title">{{ProductItem.productName}}</h2>
+            <div class="product-rating">
+              <div class="star-rating">
+                <span style="width:100%"></span>
+              </div>
+              <a href="#" class="review-link">(<span class="count">3</span> بررسی مشتری)</a>
+            </div>
+            <div class="price">{{ProductItem.price}} تومان </div>
+            <div class="short-description">
+              {{ProductItem.shortDescription}}
+            </div>
+            <div class="commerce-add-to-cart">
+              <div class="quantity-button-wrapper">
+                <label>مقدار</label>
+                <div class="quantity">
+                  <button class="increase" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" type="button"><span class="ion-arrow-up-b"></span></button>
+                  <input id="qty" type="text" name="quantity" value="1" class="input-text qty text" size="4" />
+                  <button class="decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"><span class="ion-arrow-down-b"></span></button>
+                </div>
+              </div>
+              <div class="product-actions">
+                <button type="submit" class="button style-flat">افزودن به سبد خرید</button>
+                <div class="product-action hint--top hint--bounce" aria-label="افزودن به لیست دلخواه">
+                  <a href="#" class="add_to_wishlist">افزودن به لیست دلخواه</a>
+                </div>
+                <div class="product-action compare-btn hint--bounce hint--top" aria-label="مقایسه">
+                  <a href="#" class="compare"></a>
+                </div>
+              </div>
+            </div>
+            <div class="product-meta-wrap">
+              <div class="product-meta">
+                <div class="posted_in meta-item">
+                  <h6>دسته بندی:</h6><a href="#">سخنرانان</a>
+                </div>
+                <div class="tagged_as meta-item">
+                  <h6>برچسب:</h6><a href="#">کلاسیک</a>
+                </div>
+                <div class="product-share meta-item">
+                  <h6>اشتراک:</h6>
+                  <div class="product-sharing-list">
+                    <a class="hint--bounce hint--top facebook" target="_blank" aria-label="فیسبوک" href="#"><i class="ion-social-facebook"></i></a>
+                    <a class="hint--bounce hint--top twitter" target="_blank" aria-label="توییتر" href="#"><i class="ion-social-twitter"></i></a>
+                    <a class="hint--bounce hint--top google-plus" target="_blank" aria-label="گوگل+" href="#"><i class="ion-social-googleplus"></i></a>
+                    <a class="hint--bounce hint--top tumblr" target="_blank" aria-label="تامبلر" href="#"><i class="ion-social-tumblr"></i></a>
+                    <a class="hint--bounce hint--top linkedin" target="_blank" aria-label="لینکداین" href="#"><i class="ion-social-linkedin"></i></a>
+                    <a class="hint--bounce hint--top email" target="_blank" aria-label="ایمیل" href="mailto:email@domain.com"><i class="ion-android-mail"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 p-0">
+          <div class="commerce-tab tabs mb-4">
+            <!-- Nav tabs -->
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs text-center">
+                <li>
+                  <a class="active" href="#tab-content-1" data-toggle="tab">توضیحات</a>
+                </li>
+                <li>
+                  <a href="#tab-content-2" data-toggle="tab">بررسی ها</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active fade show" id="tab-content-1">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                      {{ProductItem.description}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="tab-content-2">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                      <div id="comments" class="comments-area">
+                        <h2 class="comments-title">
+                          نظرات <span class="comment-count">(3)</span>
+                        </h2>
+                        <div class="comment-list-wrap">
+                          <ol class="comment-list">
+                            <li class="comment">
+                              <div class="comment-author vcard">
+                                <img alt="" src="/assets/images/avatar/avatar_2.jpg" class="avatar" height="60" width="60" />
+                              </div>
+                              <div class="comment-content">
+                                <div class="comment-header">
+                                  <h6>اسم فرضی</h6>
+                                  <div class="comment-datetime">20 سپتامبر 2018</div>
+                                </div>
+                                <div class="comment-text">
+                                  کار با اتم لب مانند داشتن یک عضو خانواده است که می تواند همه چیز را رفع کند. آنها دقیقا زمانی که به آن نیاز دارند می دانند که چه چیزی نیاز دارند.
+                                </div>
+                                <div class="comment-actions">
+                                  <a class="comment-reply-link" href="#"><i class="ion-reply"></i>پاسخ</a>
+                                </div>
+                              </div>
+                              <ol class="children">
+                                <li class="comment">
+                                  <div class="comment-author vcard">
+                                    <img alt="" src="/assets/images/avatar/avatar_2.jpg" class="avatar" height="60" width="60" />
+                                  </div>
+                                  <div class="comment-content">
+                                    <div class="comment-header">
+                                      <h6>اسم فرضی</h6>
+                                      <div class="comment-datetime">20 سپتامبر 2018</div>
+                                    </div>
+                                    <div class="comment-text">
+                                      کار با اتم لب مانند داشتن یک عضو خانواده است که می تواند همه چیز را رفع کند. آنها دقیقا زمانی که به آن نیاز دارند می دانند که چه چیزی نیاز دارند.
+                                    </div>
+                                    <div class="comment-actions">
+                                      <a class="comment-reply-link" href="#"><i class="ion-reply"></i>پاسخ</a>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="comment">
+                                  <div class="comment-author vcard">
+                                    <img alt="" src="/assets/images/avatar/avatar_2.jpg" class="avatar" height="60" width="60" />
+                                  </div>
+                                  <div class="comment-content">
+                                    <div class="comment-header">
+                                      <h6>اسم فرضی</h6>
+                                      <div class="comment-datetime">20 سپتامبر 2018</div>
+                                    </div>
+                                    <div class="comment-text">
+                                      کار با اتم لب مانند داشتن یک عضو خانواده است که می تواند همه چیز را رفع کند. آنها دقیقا زمانی که به آن نیاز دارند می دانند که چه چیزی نیاز دارند.
+                                    </div>
+                                    <div class="comment-actions">
+                                      <a class="comment-reply-link" href="#"><i class="ion-reply"></i>پاسخ</a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ol>
+                            </li>
+                          </ol>
+                        </div>
+                        <div class="comment-form-wrap">
+                          <div id="respond" class="comment-respond">
+                            <h3 class="comment-reply-title">نظر خود را اینجا بنویسید</h3>
+                            <form class="comment-form">
+                              <div class="comment-form-wrapper">
+                                <div class="left-form">
+                                  <div class="comment-form-author">
+                                    <input id="author" placeholder="نام شما *" name="author" type="text" value="" size="30" />
+                                  </div>
+                                  <div class="comment-form-email">
+                                    <input id="email" placeholder="ایمیل شما *" name="email" type="text" value="" size="30" />
+                                  </div>
+                                  <div class="comment-form-url">
+                                    <input id="url" placeholder="وبسایت" name="url" type="text" value="" size="30" />
+                                  </div>
+                                </div>
+                                <div class="right-form">
+                                  <div class="comment-form-comment">
+                                    <textarea id="comment" placeholder="نظر شما" name="comment"></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-submit">
+                                <input name="submit" type="submit" id="submit" class="submit button style-flat" value="تایید" />
+                              </div>
+                            </form>
+                          </div><!-- #respond -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="related-products">
+            <h2>محصولات مرتبط</h2>
+            <div class="row">
+              <app-single-product class="col-sm-4"  [product]="ProductItem"></app-single-product>
+              <app-single-product class="col-sm-4"  [product]="ProductItem"></app-single-product>
+              <app-single-product class="col-sm-4"  [product]="ProductItem"></app-single-product>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,6 +28,7 @@ import {ProductsService} from "./services/products.service";
 import { SingleProductComponent } from './Shared/single-product/single-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
+import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {MatSliderModule} from "@angular/material/slider";
     LoginComponent,
     ActivateAccountComponent,
     ProductsComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
