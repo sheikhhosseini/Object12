@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductDto} from "../../DTOs/Products/ProductDto";
 import {ProductImagePath} from "../../Utilites/PathTool";
 
+declare function OwlCarousel() : any;
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -11,7 +13,9 @@ import {ProductImagePath} from "../../Utilites/PathTool";
 })
 export class ProductDetailsComponent implements OnInit {
 
-  ProductItem !: ProductDto;
+  // @ts-ignore
+  ProductItem : ProductDto = new ProductDto();
+
   ProductImage = ProductImagePath;
 
   constructor(private _productService : ProductsService ,
@@ -21,17 +25,23 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this._activatedRoute.params.subscribe(params=>{
       const productId = params.productId;
-      // if (productId === undefined){
-      //   this._route.navigate(['products']);
-      // }
+
       this._productService.GetProductDetail(productId).subscribe(res=>{
         if (res.status === "NotFound"){
           this._route.navigate(['products']);
         }
+
         this.ProductItem = res.data;
       })
     })
-    //this._productService.GetProductDetail()
+
+
+    setInterval(() =>
+    {
+      OwlCarousel();
+    },100);
+
+
   }
 
 }

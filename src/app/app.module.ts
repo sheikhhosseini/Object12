@@ -29,6 +29,7 @@ import { SingleProductComponent } from './Shared/single-product/single-product.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ProductDetailsComponent } from './Pages/product-details/product-details
     FormsModule,
     SweetAlert2Module.forRoot(),
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTabsModule
   ],
   providers: [
     SliderService,
