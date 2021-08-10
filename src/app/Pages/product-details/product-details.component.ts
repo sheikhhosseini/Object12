@@ -20,6 +20,7 @@ export class ProductDetailsComponent implements OnInit{
   ProductGalleries !: ProductGalleryDto[];
   ProductImagePath = ProductImagePath;
   ProductGalleryImagePath = ProductGalleryImagePath;
+  RelatedProducts : ProductDto[] = [];
 
   constructor(private _productService : ProductsService ,
               private _activatedRoute : ActivatedRoute ,
@@ -29,16 +30,20 @@ export class ProductDetailsComponent implements OnInit{
 
     this._activatedRoute.params.subscribe(params=>{
       const productId = params.productId;
-
       this._productService.GetProductDetail(productId).subscribe(res=>{
         if (res.status === "NotFound"){
           this._route.navigate(['products']);
         }
-
-
         this.ProductItem = res.data.product;
         this.ProductGalleries = res.data.galleries;
       })
+
+
+
+      this._productService.GetRelatedProducts(productId).subscribe(res=>{
+        this.RelatedProducts = res.data;
+
+      });
     })
     setInterval(() =>
     {

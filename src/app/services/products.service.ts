@@ -55,5 +55,7 @@ export class ProductsService {
     return this._http.get<IResponseResult<ProductDetailDto>>('/products/products-detail/' + productId);
   }
 
-
+  GetRelatedProducts(productId : number) : Observable<IResponseResult<ProductDto[]>>{
+    return this._http.get<IResponseResult<ProductDto[]>>('/products/related-products/' + productId);
+  }
 }

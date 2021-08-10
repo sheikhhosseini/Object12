@@ -203,9 +203,9 @@
           <div class="related-products">
             <h2>محصولات مرتبط</h2>
             <div class="row">
-<!--              <app-single-product class="col-sm-4"  [product]="ProductItem"></app-single-product>-->
-<!--              <app-single-product class="col-sm-4"  [product]="ProductItem"></app-single-product>-->
-<!--              <app-single-product class="col-sm-4"  [product]="ProductItem"></app-single-product>-->
+
+              <app-single-product *ngFor="let item of RelatedProducts" class="col-sm-4"  [product]="item"></app-single-product>
+
             </div>
           </div>
         </div>
