@@ -1833,7 +1833,7 @@ Theme Name: Atomlab
 }
 
 .white-opacity {
-  color: rgba(255,255,255,0.7); !important;
+  /*color: rgba(255,255,255,0.7); !important;*/
 }
 
 .dark {
@@ -1974,7 +1974,7 @@ Theme Name: Atomlab
 		padding-right: 15px !important;
 	}
 	.section-on-top {
-		margin-top: 0 !important;	
+		margin-top: 0 !important;
 	}
 	.footer-simple .text-center-sm {
 		text-align: center !important;
