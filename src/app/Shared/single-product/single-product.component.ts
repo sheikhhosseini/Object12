@@ -9,12 +9,16 @@ import {ProductImagePath} from "../../Utilites/PathTool";
 })
 export class SingleProductComponent implements OnInit {
 
-  @Input() product !: ProductDto;
-  ProductImage = ProductImagePath;
 
-  constructor() { }
+  @Input() product : ProductDto = new ProductDto(1,new Date(),'',0,''
+  ,'','',false,false);
+  ProductImage = ProductImagePath;
+  ProductName : string = '';
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.ProductName = this.product.productName.replace(/\s/g , '_')
   }
 
 }

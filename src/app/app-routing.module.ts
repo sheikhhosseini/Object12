@@ -18,7 +18,7 @@ const routes: Routes =
     {path : 'register' , component : RegisterComponent},
     {path : 'products' , component : ProductsComponent},
     {path : 'activate-account/:activeCode' , component : ActivateAccountComponent},
-    {path : 'products/:productId' , component : ProductDetailsComponent},
+    {path : 'products/:productId/:productName' , component : ProductDetailsComponent},
     // {path : '**' , component : NotfoundComponent}
   ];
 

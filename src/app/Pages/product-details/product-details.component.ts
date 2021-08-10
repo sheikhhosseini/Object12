@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductDto} from "../../DTOs/Products/ProductDto";
@@ -46,4 +46,5 @@ export class ProductDetailsComponent implements OnInit{
     },100);
 
   }
+
 }
