@@ -10,17 +10,14 @@
             </div>
             <div class="shop-detail-image-carousel dots-carousel" data-auto-play="true" data-desktop="1" data-laptop="1" data-tablet="1" data-mobile="1">
               <div class="text-center">
-                <img src="/assets/images/shop/shop_12.jpg" alt="" />
+                <img [src]="ProductImagePath + ProductItem.image" alt="" />
               </div>
-              <div class="text-center">
-                <img src="/assets/images/shop/shop_12_2.jpg" alt="" />
+
+
+              <div class="text-center" *ngFor="let gallery of ProductGalleries">
+                <img [src]="ProductGalleryImagePath + gallery.image" alt="" />
               </div>
-              <div class="text-center">
-                <img src="/assets/images/shop/shop_12_3.jpg" alt="" />
-              </div>
-              <div class="text-center">
-                <img src="/assets/images/shop/shop_12_4.jpg" alt="" />
-              </div>
+
             </div>
           </div>
         </div>

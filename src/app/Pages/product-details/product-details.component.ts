@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductDto} from "../../DTOs/Products/ProductDto";
-import {ProductImagePath} from "../../Utilites/PathTool";
+import {ProductGalleryImagePath, ProductImagePath} from "../../Utilites/PathTool";
+import {ProductGalleryDto} from "../../DTOs/Products/ProductGalleryDto";
 
 declare function OwlCarousel() : any;
 
@@ -11,18 +12,21 @@ declare function OwlCarousel() : any;
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit{
 
   // @ts-ignore
   ProductItem : ProductDto = new ProductDto();
 
-  ProductImage = ProductImagePath;
+  ProductGalleries !: ProductGalleryDto[];
+  ProductImagePath = ProductImagePath;
+  ProductGalleryImagePath = ProductGalleryImagePath;
 
   constructor(private _productService : ProductsService ,
               private _activatedRoute : ActivatedRoute ,
               private _route : Router) { }
 
   ngOnInit(): void {
+
     this._activatedRoute.params.subscribe(params=>{
       const productId = params.productId;
 
@@ -31,17 +35,15 @@ export class ProductDetailsComponent implements OnInit {
           this._route.navigate(['products']);
         }
 
-        this.ProductItem = res.data;
+
+        this.ProductItem = res.data.product;
+        this.ProductGalleries = res.data.galleries;
       })
     })
-
-
     setInterval(() =>
     {
       OwlCarousel();
     },100);
 
-
   }
-
 }
