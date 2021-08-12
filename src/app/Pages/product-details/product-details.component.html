@@ -97,65 +97,31 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-lg-8 offset-lg-2">
-                        <div id="comments" class="comments-area">
+                        <div id="comments" class="comments-area row">
                           <h2 class="comments-title">
-                            نظرات <span class="comment-count">(3)</span>
+                            نظرات <span class="comment-count">({{ProductComments.length}})</span>
                           </h2>
+                          <div *ngIf="ProductComments.length <= 0 " class="alert alert-warning" role="alert">
+                            برای این محصول نظری ثبت نشده
+                          </div>
                           <div class="comment-list-wrap">
                             <ol class="comment-list">
-                              <li class="comment">
+
+                              <li *ngFor="let comment of ProductComments" class="comment">
                                 <div class="comment-author vcard">
                                   <img alt="" src="/assets/images/avatar/avatar_2.jpg" class="avatar" height="60" width="60" />
                                 </div>
                                 <div class="comment-content">
                                   <div class="comment-header">
-                                    <h6>اسم فرضی</h6>
-                                    <div class="comment-datetime">20 سپتامبر 2018</div>
+                                    <h6>{{comment.userFullName}}</h6>
+                                    <div class="comment-datetime">{{comment.createDate}}</div>
                                   </div>
                                   <div class="comment-text">
-                                    کار با اتم لب مانند داشتن یک عضو خانواده است که می تواند همه چیز را رفع کند. آنها دقیقا زمانی که به آن نیاز دارند می دانند که چه چیزی نیاز دارند.
-                                  </div>
-                                  <div class="comment-actions">
-                                    <a class="comment-reply-link" href="#"><i class="ion-reply"></i>پاسخ</a>
+                                      {{comment.commentText}}
                                   </div>
                                 </div>
-                                <ol class="children">
-                                  <li class="comment">
-                                    <div class="comment-author vcard">
-                                      <img alt="" src="/assets/images/avatar/avatar_2.jpg" class="avatar" height="60" width="60" />
-                                    </div>
-                                    <div class="comment-content">
-                                      <div class="comment-header">
-                                        <h6>اسم فرضی</h6>
-                                        <div class="comment-datetime">20 سپتامبر 2018</div>
-                                      </div>
-                                      <div class="comment-text">
-                                        کار با اتم لب مانند داشتن یک عضو خانواده است که می تواند همه چیز را رفع کند. آنها دقیقا زمانی که به آن نیاز دارند می دانند که چه چیزی نیاز دارند.
-                                      </div>
-                                      <div class="comment-actions">
-                                        <a class="comment-reply-link" href="#"><i class="ion-reply"></i>پاسخ</a>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li class="comment">
-                                    <div class="comment-author vcard">
-                                      <img alt="" src="/assets/images/avatar/avatar_2.jpg" class="avatar" height="60" width="60" />
-                                    </div>
-                                    <div class="comment-content">
-                                      <div class="comment-header">
-                                        <h6>اسم فرضی</h6>
-                                        <div class="comment-datetime">20 سپتامبر 2018</div>
-                                      </div>
-                                      <div class="comment-text">
-                                        کار با اتم لب مانند داشتن یک عضو خانواده است که می تواند همه چیز را رفع کند. آنها دقیقا زمانی که به آن نیاز دارند می دانند که چه چیزی نیاز دارند.
-                                      </div>
-                                      <div class="comment-actions">
-                                        <a class="comment-reply-link" href="#"><i class="ion-reply"></i>پاسخ</a>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ol>
                               </li>
+
                             </ol>
                           </div>
                           <div class="comment-form-wrap">

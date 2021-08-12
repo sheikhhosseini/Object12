@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductDto} from "../../DTOs/Products/ProductDto";
 import {ProductGalleryImagePath, ProductImagePath} from "../../Utilites/PathTool";
 import {ProductGalleryDto} from "../../DTOs/Products/ProductGalleryDto";
+import {ProductCommentDto} from "../../DTOs/Products/ProductCommentDto";
 
 declare function OwlCarousel() : any;
 
@@ -21,6 +22,7 @@ export class ProductDetailsComponent implements OnInit{
   ProductImagePath = ProductImagePath;
   ProductGalleryImagePath = ProductGalleryImagePath;
   RelatedProducts : ProductDto[] = [];
+  ProductComments : ProductCommentDto[] = [];
 
   constructor(private _productService : ProductsService ,
               private _activatedRoute : ActivatedRoute ,
@@ -38,13 +40,19 @@ export class ProductDetailsComponent implements OnInit{
         this.ProductGalleries = res.data.galleries;
       })
 
-
-
       this._productService.GetRelatedProducts(productId).subscribe(res=>{
         this.RelatedProducts = res.data;
+      });
 
+      this._productService.GetProductComments(productId).subscribe(res=>{
+        this.ProductComments = res.data;
+        //console.log(this.ProductComments)
       });
     })
+
+
+
+
     setInterval(() =>
     {
       OwlCarousel();
