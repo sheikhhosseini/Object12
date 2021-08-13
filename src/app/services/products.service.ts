@@ -8,6 +8,7 @@ import {ProductOrderBy} from "../DTOs/Products/ProductOrderBy";
 import {ProductDto} from "../DTOs/Products/ProductDto";
 import {ProductDetailDto} from "../DTOs/Products/ProductDetailDto";
 import {ProductCommentDto} from "../DTOs/Products/ProductCommentDto";
+import {AddProductComment} from "../DTOs/Products/AddProductComment";
 
 
 @Injectable({
@@ -63,5 +64,9 @@ export class ProductsService {
 
   GetProductComments(productId : number) : Observable<IResponseResult<ProductCommentDto[]>>{
     return this._http.get<IResponseResult<ProductCommentDto[]>>('/products/products-comments/' + productId);
+  }
+
+  AddProductComment(comment : AddProductComment) : Observable<IResponseResult<ProductCommentDto>>{
+    return this._http.post<IResponseResult<ProductCommentDto>>('/products/add-product-comment/' , comment);
   }
 }

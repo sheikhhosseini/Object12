@@ -114,7 +114,7 @@
                                 <div class="comment-content">
                                   <div class="comment-header">
                                     <h6>{{comment.userFullName}}</h6>
-                                    <div class="comment-datetime">{{comment.createDate}}</div>
+                                    <div class="comment-datetime">{{comment.createDate    }}</div>
                                   </div>
                                   <div class="comment-text">
                                       {{comment.commentText}}
@@ -125,29 +125,21 @@
                             </ol>
                           </div>
                           <div class="comment-form-wrap">
-                            <div id="respond" class="comment-respond">
+                            <div *ngIf="!CurrentUser" class="alert alert-warning text-center" role="alert">
+                             کاربر گرامی برای ثبت نظرات باید ابتدا وارد حساب کاربری خود شوید
+                              <br>
+                              <p class="text-center">
+                                <a [routerLink]="'/login'">ورود به حساب کاربری</a>
+                              </p>
+                            </div>
+                            <div *ngIf="CurrentUser" id="respond" class="comment-respond">
                               <h3 class="comment-reply-title">نظر خود را اینجا بنویسید</h3>
-                              <form class="comment-form">
-                                <div class="comment-form-wrapper">
-                                  <div class="left-form">
-                                    <div class="comment-form-author">
-                                      <input id="author" placeholder="نام شما *" name="author" type="text" value="" size="30" />
-                                    </div>
-                                    <div class="comment-form-email">
-                                      <input id="email" placeholder="ایمیل شما *" name="email" type="text" value="" size="30" />
-                                    </div>
-                                    <div class="comment-form-url">
-                                      <input id="url" placeholder="وبسایت" name="url" type="text" value="" size="30" />
-                                    </div>
-                                  </div>
-                                  <div class="right-form">
-                                    <div class="comment-form-comment">
-                                      <textarea id="comment" placeholder="نظر شما" name="comment"></textarea>
-                                    </div>
-                                  </div>
+                              <form [formGroup]="CommentForm" (ngSubmit)="AddComment()" class="comment-form row">
+                                <div class="comment-form-comment">
+                                  <textarea formControlName="commentText" id="comment" placeholder="نظر شما" name="comment"></textarea>
                                 </div>
                                 <div class="form-submit">
-                                  <input name="submit" type="submit" id="submit" class="submit button style-flat" value="تایید" />
+                                  <button [disabled]="CommentForm.invalid"  type="submit"  class="btn btn-primary">ثبت نظر</button>
                                 </div>
                               </form>
                             </div><!-- #respond -->

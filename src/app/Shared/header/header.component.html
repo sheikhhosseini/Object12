@@ -113,14 +113,14 @@
                   </li>
 
                   <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
-                    <a  >
+                    <a  class="MyCursor-pointer">
                       <span class="sub-arrow">+</span>
                       <span class="menu-item-title" >خوش آمدید {{currentUser.fristName}}</span>
                       <span class="toggle-sub-menu"> </span>
                     </a>
                   </li>
                   <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
-                    <a >
+                    <a class="MyCursor-pointer">
                       <span class="sub-arrow">+</span>
                       <span class="menu-item-title" (click)="LogOutUser()">خروج</span>
                       <span class="toggle-sub-menu"> </span>
