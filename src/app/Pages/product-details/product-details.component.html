@@ -38,13 +38,13 @@
               <div class="quantity-button-wrapper">
                 <label>مقدار</label>
                 <div class="quantity">
-                  <button class="increase" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" type="button"><span class="ion-arrow-up-b"></span></button>
-                  <input id="qty" type="text" name="quantity" value="1" class="input-text qty text" size="4" />
-                  <button class="decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"><span class="ion-arrow-down-b"></span></button>
+                  <button class="increase" (click)="AddCount()" type="button"><span class="ion-arrow-up-b"></span></button>
+                  <input disabled [(ngModel)]="ProductCount"  type="text"  value="1" class="input-text qty text" size="4" />
+                  <button class="decrease" (click)="MinusCount()" type="button"><span class="ion-arrow-down-b"></span></button>
                 </div>
               </div>
               <div class="product-actions">
-                <button type="submit" class="button style-flat">افزودن به سبد خرید</button>
+                <button (click)="AddProductToOrder()" type="submit" class="button style-flat">افزودن به سبد خرید</button>
                 <div class="product-action hint--top hint--bounce" aria-label="افزودن به لیست دلخواه">
                   <a href="#" class="add_to_wishlist">افزودن به لیست دلخواه</a>
                 </div>

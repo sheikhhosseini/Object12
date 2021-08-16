@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {OrderService} from "./services/order.service";
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import {MatTabsModule} from '@angular/material/tabs';
   ],
   providers: [
     SliderService,
+    OrderService,
     ProductsService,
     AccountService,
     {

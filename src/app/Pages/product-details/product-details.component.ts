@@ -10,6 +10,7 @@ import {AccountService} from "../../services/account.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AddProductComment} from "../../DTOs/Products/AddProductComment";
 import {log} from "util";
+import {OrderService} from "../../services/order.service";
 
 declare function OwlCarousel() : any;
 
@@ -29,14 +30,16 @@ export class ProductDetailsComponent implements OnInit{
   ProductComments : ProductCommentDto[] = [];
   // @ts-ignore
   CurrentUser : CurrentUserDto = null;
-
   // @ts-ignore
   CommentForm : FormGroup;
+  ProductCount :number = 1;
+
 
   constructor(private _productService : ProductsService ,
               private _activatedRoute : ActivatedRoute ,
               private _route : Router,
-              private  _accountService : AccountService) { }
+              private  _accountService : AccountService,
+              private _orderService : OrderService) { }
 
   ngOnInit(): void {
 
@@ -80,6 +83,27 @@ export class ProductDetailsComponent implements OnInit{
 
   }
 
+  AddCount() {
+    this.ProductCount++;
+  }
+
+  MinusCount() {
+    if (this.ProductCount > 1){
+      this.ProductCount--;
+    }
+  }
+
+  AddProductToOrder(){
+    const productId = this.ProductItem.id;
+    const count = this.ProductCount;
+    //console.log(productId)
+
+      this._orderService.AddProductToOrder(productId,count).subscribe(res=>{
+        console.log(res);
+      });
+
+
+  }
 
 
   AddComment(){
