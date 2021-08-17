@@ -8,18 +8,20 @@ import {RegisterComponent} from "./Pages/register/register.component";
 import {ActivateAccountComponent} from "./pages/activate-account/activate-account.component";
 import {ProductsComponent} from "./Pages/products/products.component";
 import {ProductDetailsComponent} from "./Pages/product-details/product-details.component";
+import {NotfoundComponent} from "./Pages/notfound/notfound.component";
+import {UserAuthGuardGuard} from "./myguards/user-auth-guard.guard";
 
 const routes: Routes =
   [
     {path : '' , component : IndexComponent},
     {path : 'about-us' , component : AboutUsComponent},
-    {path : 'contact-us' , component : ContactUsComponent},
+    {path : 'contact-us' , component : ContactUsComponent , canActivate : [UserAuthGuardGuard]},
     {path : 'login' , component : LoginComponent},
     {path : 'register' , component : RegisterComponent},
     {path : 'products' , component : ProductsComponent},
     {path : 'activate-account/:activeCode' , component : ActivateAccountComponent},
     {path : 'products/:productId/:productName' , component : ProductDetailsComponent},
-    // {path : '**' , component : NotfoundComponent}
+    {path : '**' , component : NotfoundComponent}
   ];
 
 @NgModule({

@@ -32,6 +32,7 @@ import { ProductDetailsComponent } from './Pages/product-details/product-details
 import {MatTabsModule} from '@angular/material/tabs';
 import {OrderService} from "./services/order.service";
 import { LittleBasketComponent } from './shared/little-basket/little-basket.component';
+import { NotfoundComponent } from './Pages/notfound/notfound.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { LittleBasketComponent } from './shared/little-basket/little-basket.comp
     ProductsComponent,
     SingleProductComponent,
     ProductDetailsComponent,
-    LittleBasketComponent
+    LittleBasketComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

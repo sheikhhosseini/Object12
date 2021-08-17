@@ -12,6 +12,8 @@ import {normalizeExtraEntryPoints} from "@angular-devkit/build-angular/src/webpa
 })
 export class AccountService {
 
+  private LoggedIn = false;
+
   constructor(private _http: HttpClient) {
   }
 
@@ -19,13 +21,26 @@ export class AccountService {
   private  currentUser : BehaviorSubject<CurrentUserDto> = new BehaviorSubject<CurrentUserDto>(null);
 
   GetCurentUser() : Observable<CurrentUserDto>{
-
     return this.currentUser;
   }
 
   SetCurentUser(user : CurrentUserDto | any) : void{
     this.currentUser.next(user);
+    if (user !== null){
+      this.LoggedIn = true;
+    }
+    else {
+      this.LoggedIn = false;
+    }
   }
+
+  IsAuthenticated(){
+    const myPromice = new Promise((resolve , reject) =>{
+      resolve(this.LoggedIn)
+    });
+    return myPromice;
+  }
+
 
   RegisterUser(registerData: UserRegisterDto): Observable<any> {
     return this._http.post<any>("/account/register", registerData);
