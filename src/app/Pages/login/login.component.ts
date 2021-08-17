@@ -7,6 +7,7 @@ import {AccountService} from "../../services/account.service";
 import {CurrentUserDto} from "../../DTOs/Account/CurrentUserDto";
 import {CookieService} from "ngx-cookie-service";
 import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
+import {OrderService} from "../../services/order.service";
 
 
 @Component({
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   UsernameText: string = '';
 
   constructor(private _route: ActivatedRoute, private _accountService: AccountService,private _router : Router,
-              private _cookie: CookieService) {
+              private _cookie: CookieService,private _orderService : OrderService) {
     this._route.queryParams.subscribe(params => {
       this.UsernameText = params['UsernameText'];
       this.NewRegisterStatus = params['NewRegisterStatus'];
@@ -78,6 +79,11 @@ export class LoginComponent implements OnInit {
           // console.log(twentyMinutesLater);
           this._accountService.GetCurentUser().subscribe(user => {
             this._cookie.set('Object13', response.data.token, response.data.expireTime, "", "", true);
+            this._orderService.GetUserBasketDetails().subscribe(res=>{
+              if (res.status === "Success"){
+                this._orderService._SetOrderDetails(res.data);
+              }
+            })
           });
           this._router.navigate(['/']);
         }

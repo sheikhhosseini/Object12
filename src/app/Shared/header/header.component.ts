@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {CurrentUserDto} from "../../DTOs/Account/CurrentUserDto";
 import {AccountService} from "../../services/account.service";
 import {CookieService} from "ngx-cookie-service";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,9 @@ export class HeaderComponent implements OnInit{
   // @ts-ignore
   currentUser : CurrentUserDto = null;
 
-  constructor(private _accountService : AccountService , private _cookieService : CookieService) { }
+  constructor(private _accountService : AccountService , private _cookieService : CookieService,
+
+  private _orderService : OrderService) { }
 
   ngOnInit(): void {
     this._accountService.GetCurentUser().subscribe(user=>{
@@ -32,8 +35,7 @@ export class HeaderComponent implements OnInit{
     // });
     this._accountService.SetCurentUser(null);
     this._cookieService.delete('Object13');
-    console.log("cookie Deleted");
-
+    this._orderService._SetOrderDetails([]);
   }
 
 }

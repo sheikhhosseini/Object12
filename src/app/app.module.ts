@@ -31,6 +31,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {OrderService} from "./services/order.service";
+import { HeaderBasketComponent } from './Shared/header-basket/header-basket.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {OrderService} from "./services/order.service";
     ActivateAccountComponent,
     ProductsComponent,
     SingleProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    HeaderBasketComponent
   ],
   imports: [
     BrowserModule,

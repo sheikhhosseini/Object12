@@ -96,10 +96,8 @@ export class ProductDetailsComponent implements OnInit{
   AddProductToOrder(){
     const productId = this.ProductItem.id;
     const count = this.ProductCount;
-    //console.log(productId)
-
       this._orderService.AddProductToOrder(productId,count).subscribe(res=>{
-        console.log(res);
+        this._orderService._SetOrderDetails(res.data);
       });
 
 

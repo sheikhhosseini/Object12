@@ -48,114 +48,115 @@
     </div>
   </div>
 </div>
-<header class="header header-1 header-desktop">
+
+<header class="header header-2 header-desktop header-sticky border-bottom">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="header-wrap">
-          <div class="header-left">
-            <div class="branding">
-              <div class="branding__logo">
-                <a href="/assets/index.html" rel="home">
-                  <img src="/assets/images/blog-manazine-logo.png" alt="Atomlab" class="main-logo" />
-                </a>
-              </div>
-            </div>
-            <div class="navigation page-navigation d-none d-xl-block">
-              <nav class="menu menu--primary">
-                <ul>
-                  <li class="menu-item-has-children mega-menu">
-                    <a routerLink="">
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav"
-                      [routerLinkActiveOptions]="{exact:true}">صفحه اصلی</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-                  <li class="menu-item-has-children">
-                    <a routerLink="products">
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav" >محصولات</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                    <ul class="sub-menu">
-                      <li><a href="/assets/blog-large-image.html">وبلاگ تصویر بزرگ</a></li>
-                      <li><a href="/assets/blog-small-image.html">وبلاگ تصویر کوچک</a></li>
-                      <li><a href="/assets/blog-grid-masonry.html">وبلاگ حالت گرید</a></li>
-                      <li class="menu-item-has-children">
-                        <a href="/assets/#">
-                          <span class="sub-arrow">+</span>
-                          <span class="menu-item-title">طرح های پست تکی</span>
-                          <span class="toggle-sub-menu"> </span>
-                        </a>
-                        <ul class="sub-menu">
-                          <li><a href="/assets/blog-left-sidebar.html">وبلاگ نوارکناری چپ</a></li>
-                          <li><a href="/assets/blog-no-sidebar.html">وبلاگ بدون نوارکناری</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li *ngIf="currentUser == null" class="menu-item-has-children mega-menu">
-                    <a routerLink="register" >
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav">ثبت نام</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-
-                  <li *ngIf="currentUser == null" class="menu-item-has-children mega-menu">
-                    <a routerLink="login" >
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav">ورود</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-
-                  <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
-                    <a  class="MyCursor-pointer">
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" >خوش آمدید {{currentUser.fristName}}</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-                  <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
-                    <a class="MyCursor-pointer">
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" (click)="LogOutUser()">خروج</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-
-                  <li class="menu-item-has-children mega-menu">
-                    <a routerLink="contact-us" >
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav">تماس با ما</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-
-                  <li class="menu-item-has-children mega-menu">
-                    <a routerLink="about-us" >
-                      <span class="sub-arrow">+</span>
-                      <span class="menu-item-title" routerLinkActive="MyActiveNav">درباره ما</span>
-                      <span class="toggle-sub-menu"> </span>
-                    </a>
-                  </li>
-
-                </ul>
-              </nav>
+          <div class="branding">
+            <div class="branding__logo">
+              <a href="index.html" rel="home">
+                <img src="/assets/images/logo.png" alt="Atomlab" class="main-logo" />
+                <img src="/assets/images/logo.png" alt="Atomlab" class="sticky-logo" />
+              </a>
             </div>
           </div>
+          <div class="navigation page-navigation d-none d-xl-block">
+            <nav class="menu menu--primary text-center">
+              <ul class="">
+                <li class="menu-item-has-children mega-menu">
+                  <a routerLink="">
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav"
+                          [routerLinkActiveOptions]="{exact:true}">صفحه اصلی</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+                <li class="menu-item-has-children">
+                  <a routerLink="products">
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav" >محصولات</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                  <ul class="sub-menu">
+                    <li><a href="/assets/blog-large-image.html">وبلاگ تصویر بزرگ</a></li>
+                    <li><a href="/assets/blog-small-image.html">وبلاگ تصویر کوچک</a></li>
+                    <li><a href="/assets/blog-grid-masonry.html">وبلاگ حالت گرید</a></li>
+                    <li class="menu-item-has-children">
+                      <a href="/assets/#">
+                        <span class="sub-arrow">+</span>
+                        <span class="menu-item-title">طرح های پست تکی</span>
+                        <span class="toggle-sub-menu"> </span>
+                      </a>
+                      <ul class="sub-menu">
+                        <li><a href="/assets/blog-left-sidebar.html">وبلاگ نوارکناری چپ</a></li>
+                        <li><a href="/assets/blog-no-sidebar.html">وبلاگ بدون نوارکناری</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li *ngIf="currentUser == null" class="menu-item-has-children mega-menu">
+                  <a routerLink="register" >
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav">ثبت نام</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+
+                <li *ngIf="currentUser == null" class="menu-item-has-children mega-menu">
+                  <a routerLink="login" >
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav">ورود</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+
+                <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
+                  <a  class="MyCursor-pointer">
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" >خوش آمدید {{currentUser.fristName}}</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+                <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
+                  <a class="MyCursor-pointer">
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" (click)="LogOutUser()">خروج</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+
+                <li class="menu-item-has-children mega-menu">
+                  <a routerLink="contact-us" >
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav">تماس با ما</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+
+                <li class="menu-item-has-children mega-menu">
+                  <a routerLink="about-us" >
+                    <span class="sub-arrow">+</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav">درباره ما</span>
+                    <span class="toggle-sub-menu"> </span>
+                  </a>
+                </li>
+
+              </ul>
+            </nav>
+          </div>
           <div class="header-right">
-            <div class="newsletter-form">
-              <div class="heading">اشتراک برای <mark>خبرنامه</mark></div>
-              <div class="form-wrapper">
-                <form>
-                  <input type="email" name="EMAIL" placeholder="ایمیل خود را وارد کنید" required="" />
-                  <button class="form-submit" type="submit">اشتراک</button>
-                </form>
-              </div>
+
+
+            <app-header-basket></app-header-basket>
+
+            <div class="popup-search-wrap">
+              <a href="#" id="btn-open-popup-search" class="btn-open-popup-search show-search"><i class="fa fa-search"></i></a>
+            </div>
+            <div class="header-button d-none d-sm-block">
+              <a class="button style-outline" href="#">شروع کنید</a>
             </div>
             <div id="page-open-mobile-menu" class="page-open-mobile-menu">
               <div><i></i></div>
@@ -166,6 +167,7 @@
     </div>
   </div>
 </header>
+
 <div id="page-mobile-main-menu" class="page-mobile-main-menu">
   <div class="page-mobile-menu-header">
     <div class="page-mobile-menu-logo">

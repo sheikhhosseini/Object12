@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from "./services/account.service";
 import {CurrentUserDto} from "./DTOs/Account/CurrentUserDto";
+import {OrderService} from "./services/order.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import {CurrentUserDto} from "./DTOs/Account/CurrentUserDto";
 export class AppComponent implements OnInit{
   title = 'Front-Project';
 
-  constructor(private _accountService : AccountService ) {
+  constructor(private _accountService : AccountService,
+              private _orderService : OrderService) {
   }
 
   ngOnInit():void {
@@ -22,7 +24,14 @@ export class AppComponent implements OnInit{
           )
         this._accountService.SetCurentUser(user);
       }
-      //console.log(res);
+
     });
+
+    this._orderService.GetUserBasketDetails().subscribe(res=>{
+      if (res.status === "Success"){
+        this._orderService._SetOrderDetails(res.data);
+      }
+    })
+
   }
 }
