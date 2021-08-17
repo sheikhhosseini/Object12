@@ -31,7 +31,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {OrderService} from "./services/order.service";
-import { HeaderBasketComponent } from './Shared/header-basket/header-basket.component';
+import { LittleBasketComponent } from './shared/little-basket/little-basket.component';
 
 
 @NgModule({
@@ -53,7 +53,7 @@ import { HeaderBasketComponent } from './Shared/header-basket/header-basket.comp
     ProductsComponent,
     SingleProductComponent,
     ProductDetailsComponent,
-    HeaderBasketComponent
+    LittleBasketComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@
   <div class="widget_shopping_cart_content" *ngIf="details && details.length > 0">
     <ul class="cart-list">
       <li class="mini-cart-item" *ngFor="let item of details">
-        <a href="#" class="remove"><span class="ion-ios-trash-outline"></span></a>
+        <a (click)="RemoveOrderDetail(item.id)" class="remove"><span class="ion-ios-trash-outline"></span></a>
         <a href="shop-detail.html">
           <img width="150" height="150" [src]="item.image" alt="" />
           {{item.title}}

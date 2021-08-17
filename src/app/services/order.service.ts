@@ -32,4 +32,8 @@ export class OrderService {
   GetUserBasketDetails():Observable<IResponseResult<OrderBasketDto[]>>{
     return this._http.get<IResponseResult<OrderBasketDto[]>>('/order/basket-details');
   }
+
+  RemoveOrderDetail(id : number):Observable<IResponseResult<OrderBasketDto[]>>{
+    return this._http.get<IResponseResult<OrderBasketDto[]>>('/order/remove-basket-details/' + id);
+  }
 }
