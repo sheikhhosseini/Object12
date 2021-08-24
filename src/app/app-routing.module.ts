@@ -11,17 +11,19 @@ import {ProductDetailsComponent} from "./Pages/product-details/product-details.c
 import {NotfoundComponent} from "./Pages/notfound/notfound.component";
 import {UserAuthGuardGuard} from "./myguards/user-auth-guard.guard";
 import {UserLoginRegisterStatusGuard} from "./myguards/user-login-register-status.guard";
+import {UserProfileComponent} from "./Pages/account/user-profile/user-profile.component";
 
 const routes: Routes =
   [
     {path : '' , component : IndexComponent},
     {path : 'about-us' , component : AboutUsComponent},
-    {path : 'contact-us' , component : ContactUsComponent , canActivate : [UserAuthGuardGuard]},
+    {path : 'contact-us' , component : ContactUsComponent , canActivate : []},
     {path : 'login' , component : LoginComponent,canActivate : [UserLoginRegisterStatusGuard]},
     {path : 'register' , component : RegisterComponent,canActivate : [UserLoginRegisterStatusGuard]},
     {path : 'products' , component : ProductsComponent},
     {path : 'activate-account/:activeCode' , component : ActivateAccountComponent},
     {path : 'products/:productId/:productName' , component : ProductDetailsComponent},
+    {path : 'user/profile' , component : UserProfileComponent , canActivate : [UserAuthGuardGuard]},
     {path : '**' , component : NotfoundComponent}
   ];
 

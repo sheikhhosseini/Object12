@@ -114,9 +114,9 @@
                 </li>
 
                 <li *ngIf="currentUser != null" class="menu-item-has-children mega-menu">
-                  <a  class="MyCursor-pointer">
+                  <a routerLink="user/profile" class="MyCursor-pointer">
                     <span class="sub-arrow">+</span>
-                    <span class="menu-item-title" >خوش آمدید {{currentUser.fristName}}</span>
+                    <span class="menu-item-title" routerLinkActive="MyActiveNav" >خوش آمدید {{currentUser.fristName}}</span>
                     <span class="toggle-sub-menu"> </span>
                   </a>
                 </li>
