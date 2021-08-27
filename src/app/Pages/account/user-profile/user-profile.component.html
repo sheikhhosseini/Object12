@@ -1,1 +1,61 @@
-<p>user-profile works!</p>
+<div id="main" class="container-fluid">
+  <h3 class="heading fw-bolder text-center">پنل کاربری</h3>
+  <div class="row m-2">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              اطلاعات حساب کاربری
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row justify-content-center">
+            <form [formGroup]="UserInfoForm" (ngSubmit)="SubmitLoginForm()" class="commerce-form-login col-sm-8">
+              <div class="form-item">
+                <label for="username">نام کاربری یا آدرس ایمیل <span class="required">*</span></label>
+                <input formControlName="Email" type="text" class="form-text form-control" name="username" id="username"  />
+                <li *ngIf="UserInfoForm.controls.Email.errors?.required && UserInfoForm.controls.Email.touched" class="text-danger" >
+                  لطفا ایمیل خود را وارد کنید
+                </li>
+                <li *ngIf="UserInfoForm.controls.Email.errors?.maxlength && UserInfoForm.controls.Email.touched" class="text-danger" >
+                  تعداد کارراکتر های مجاز این فیلد 100 میباشد
+                </li>
+                <li *ngIf="UserInfoForm.controls.Email.errors?.email && UserInfoForm.controls.Email.touched" class="text-danger" >
+                  فرمت ایمیل وارد شده صحیح نمیباشد
+                </li>
+              </div>
+              <div class="form-item">
+                <label for="password">رمزعبور <span class="required">*</span></label>
+                <input formControlName="Password" class="form-text form-control" type="password" name="password" id="password" />
+                <li *ngIf="UserInfoForm.controls.Password.errors?.required && UserInfoForm.controls.Password.touched" class="text-danger" >
+                  لطفا رمز عبور خود را وارد کنید
+                </li>
+                <li *ngIf="(UserInfoForm.controls.Password.errors?.maxlength && UserInfoForm.controls.Password.touched) ||
+                    (UserInfoForm.controls.Password.errors?.minlength && UserInfoForm.controls.Password.touched)" class="text-danger" >
+                  تعداد کاراکتر های مجاز برای رمز عبور : حد اقل 4 کاراکتر و حد اکثر 15 کاراکتر میباشد
+                </li>
+              </div>
+              <div class="form-item">
+                <input formControlName="RememberMe" class="form-checkbox" type="checkbox" id="rememberme" value="false"> <label for="rememberme">مرا به خاطر بسپار</label>
+              </div>
+              <div class="form-item row justify-content-center">
+                <button [disabled]="UserInfoForm.invalid" type="submit" class="btn btn-primary col-sm-6" name="login" value="Login">ورود</button>
+              </div>
+              <div class="form-item row justify-content-center">
+                <a class="col-sm-6 text-center" routerLink="register">رمز عبور خود را فراموش کرده اید؟</a>
+              </div>
+              <div class="form-item row justify-content-center">
+                <a class="col-sm-6 text-center" routerLink="/register">ثبت حساب کاربری!</a>
+              </div>
+            </form>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+  </div>
+
+</div>
+

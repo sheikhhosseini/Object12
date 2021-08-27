@@ -34,7 +34,7 @@ import {OrderService} from "./services/order.service";
 import { LittleBasketComponent } from './shared/little-basket/little-basket.component';
 import { NotfoundComponent } from './Pages/notfound/notfound.component';
 import { UserProfileComponent } from './Pages/account/user-profile/user-profile.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,8 @@ import { UserProfileComponent } from './Pages/account/user-profile/user-profile.
     SweetAlert2Module.forRoot(),
     BrowserAnimationsModule,
     MatSliderModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [
     SliderService,

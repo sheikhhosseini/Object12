@@ -6,6 +6,8 @@ import {UserLoginDto} from "../DTOs/Account/UserLoginDto";
 import {IUserLogin} from "../DTOs/Account/IUserLogin";
 import {CurrentUserDto} from "../DTOs/Account/CurrentUserDto";
 import {normalizeExtraEntryPoints} from "@angular-devkit/build-angular/src/webpack/utils/helpers";
+import {UserProfileDto} from "../DTOs/Account/UserProfileDto";
+import {IResponseResult} from "../DTOs/Common/IResponseResult";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class AccountService {
 
   // @ts-ignore
   private  currentUser : BehaviorSubject<CurrentUserDto> = new BehaviorSubject<CurrentUserDto>(null);
+
 
   GetCurentUser() : Observable<CurrentUserDto>{
     return this.currentUser;
@@ -46,5 +49,10 @@ export class AccountService {
   ActivateUser(activeCode:string) : Observable<any>
   {
     return this._http.get("/account/activate-account/" + activeCode);
+  }
+
+  GetUserProfile() : Observable<IResponseResult<UserProfileDto>>
+  {
+    return this._http.get<IResponseResult<UserProfileDto>>("/account/get-user-profile");
   }
 }
